@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="ir.touristland.Classes.HSH" />
+        <import type="java.lang.String" />
+        <variable
+            name="FlightItem"
+            type="ir.touristland.Models.FlightList.Response" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layoutDirection="ltr"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/toolbar_top"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@android:color/white"
+            android:elevation="3dp">
+
+            <android.support.v7.widget.AppCompatImageButton
+                android:id="@+id/img_back"
+                android:layout_width="?attr/actionBarSize"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:background="@android:color/transparent"
+                card_view:srcCompat="@drawable/ic_back" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="?attr/actionBarSize"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/toolbar_title"
+                    style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right|center_vertical"
+                    android:text="اطلاعات بلیط"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/sp13" />
+
+                <TextView
+                    android:id="@+id/txt_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right|center_vertical"
+                    android:textColor="#555555"
+                    android:textSize="@dimen/sp11" />
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="56dp"
+            android:fillViewport="true"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#ededed"
+                    android:gravity="right"
+                    android:paddingBottom="@dimen/dp6"
+                    android:paddingRight="@dimen/dp12"
+                    android:paddingTop="@dimen/dp6"
+                    android:text="اطلاعات پرواز"
+                    android:textColor="#555"
+                    android:textSize="@dimen/sp13"
+                    android:textStyle="bold" />
+
+                <RelativeLayout
+                    android:id="@+id/rl_tag"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#fff"
+                    android:gravity="right"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/dp16">
+
+                    <LinearLayout
+                        android:id="@+id/mTagLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:gravity="left"
+                        android:orientation="horizontal"
+                        android:paddingTop="3dp">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.2"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                           <!-- <TextView
+                                android:id="@+id/txt_arrival_time"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="@{HSH.toPersianNumber(FlightItem.arrivalTime)}"
+                                android:textColor="#000"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />-->
+
+                            <TextView
+                                android:id="@+id/txt_to_city"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:gravity="center"
+                                android:text='@{"به " + FlightItem.toCity}'
+                                android:textColor="#000"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.6"
+                            android:gravity="top"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/txt_difference"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:textColor="#000"
+                                android:textSize="12sp" />
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                app:srcCompat="@drawable/ic_line" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.2"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/txt_start_time"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="@{HSH.toPersianNumber(FlightItem.FlightTime)}"
+                                android:textColor="#000"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/txt_from_city"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:gravity="center"
+                                android:text='@{"از " + FlightItem.fromCity}'
+                                android:textColor="#000"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#dedede" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp120"
+                    android:background="#fff"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="@dimen/dp8"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="right|center_vertical"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/txt_airplane"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@{FlightItem.AirPlaneName}"
+                                    android:textColor="#555"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="هواپیما : "
+                                    android:textSize="@dimen/sp12" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="right|center_vertical"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/txt_flight_title"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@{HSH.toPersianNumber(FlightItem.FlightNo)}"
+                                    android:textColor="#555"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="شماره پرواز : "
+                                    android:textSize="@dimen/sp12" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="right|center_vertical"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/txt_flight_type"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_vertical"
+                                    android:text='@{String.valueOf(FlightItem.capLast)}'
+                                    android:textColor="#555"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_vertical"
+                                    android:text="ظرفیت باقیمانده : "
+                                    android:textSize="@dimen/sp12" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="right|center_vertical"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/txt_flight_class"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@{FlightItem.classFlight}"
+                                    android:textColor="#555"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="کلاس : "
+                                    android:textSize="@dimen/sp12" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="right|center_vertical"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/txt_services"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="#555"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="خدمات ویژه : "
+                                    android:textSize="@dimen/sp12" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="right|center_vertical"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/txt_rate_id"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="#555"
+                                    android:textStyle="bold"
+                                    android:text="@{FlightItem.dscFlight}"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="ملاحضات پرواز : "
+                                    android:textSize="@dimen/sp12" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="@dimen/dp68"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="@dimen/dp6"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/img_logo"
+                            android:layout_width="@dimen/dp60"
+                            android:layout_height="@dimen/dp60"
+                            android:scaleType="fitCenter"
+                            android:transitionName="transitionn1" />
+
+                        <TextView
+                            android:id="@+id/txt_airline_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#555555"
+                            android:text="@{FlightItem.AirlineName}"
+                            android:textSize="@dimen/sp11" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#ededed"
+                    android:gravity="right"
+                    android:paddingBottom="@dimen/dp6"
+                    android:paddingRight="@dimen/dp12"
+                    android:paddingTop="@dimen/dp6"
+                    android:text="قیمت ها"
+                    android:textColor="#555"
+                    android:textSize="@dimen/sp13"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#fff"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/dp6">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dp16"
+                            android:layout_marginRight="@dimen/dp6"
+                            android:text="ریال"
+                            android:textSize="@dimen/sp11" />
+
+                        <TextView
+                            android:id="@+id/txt_price1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{HSH.toPersianNumber(HSH.Parse(String.valueOf(FlightItem.PriceView)))}"
+                            android:textColor="#00bcd5"
+                            android:textSize="@dimen/sp14"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/dp16"
+                            android:layout_weight="1"
+                            android:text="بلیط بزرگسال" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#dedede" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/dp6">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dp16"
+                            android:layout_marginRight="@dimen/dp6"
+                            android:text="ریال"
+                            android:textSize="@dimen/sp11" />
+
+                        <TextView
+                            android:id="@+id/txt_price2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{HSH.toPersianNumber(HSH.Parse(String.valueOf(FlightItem.PriceView)))}"
+                            android:textColor="#00bcd5"
+                            android:textSize="@dimen/sp14"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/dp16"
+                            android:layout_weight="1"
+                            android:text="بلیط کودک" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#dedede" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/dp6">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dp16"
+                            android:layout_marginRight="@dimen/dp6"
+                            android:text="ریال"
+                            android:textSize="@dimen/sp11" />
+
+                        <TextView
+                            android:id="@+id/txt_price3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{HSH.toPersianNumber(HSH.Parse(String.valueOf(FlightItem.PriceINF)))}"
+                            android:textColor="#00bcd5"
+                            android:textSize="@dimen/sp14"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/dp16"
+                            android:layout_weight="1"
+                            android:text="بلیط نوزاد" />
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+        <TextView
+            android:id="@+id/btn_select_ticket"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp50"
+            android:layout_gravity="bottom"
+            android:background="#00bcd5"
+            android:gravity="center"
+            android:text="انتخاب این بلیط"
+            android:textColor="#fff"
+            android:textSize="@dimen/sp15"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

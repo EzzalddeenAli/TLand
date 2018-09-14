@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="ltr"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/frame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:orientation="vertical">
+
+            <android.support.design.widget.CoordinatorLayout
+                android:id="@+id/ll_paye"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layoutDirection="ltr">
+
+                <android.support.design.widget.AppBarLayout
+                    android:id="@+id/app_bar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/AppBar">
+                    <!--"@style/ThemeOverlay.AppCompat.Dark.ActionBar"-->
+                    <android.support.design.widget.CollapsingToolbarLayout
+                        android:id="@+id/toolbar_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:theme="@style/AppBar"
+                        app:contentScrim="@android:color/white"
+                        app:layout_scrollFlags="scroll|exitUntilCollapsed">
+                        <!--android:theme="@style/ThemeOverlay.AppCompat.ActionBar"-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <android.support.v7.widget.CardView
+                                android:id="@+id/ll_search"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <LinearLayout
+
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                    <LinearLayout
+                                        android:id="@+id/linearLayout5"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentLeft="true"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_below="@+id/view2"
+                                        android:orientation="vertical"
+                                        android:padding="8dp"
+                                        android:weightSum="1">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="8dp"
+                                            android:orientation="horizontal">
+
+                                            <RelativeLayout
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="7"
+                                                android:background="@drawable/style_edittext"
+                                                android:gravity="center">
+
+                                                <ImageView
+                                                    android:id="@+id/mic"
+                                                    android:layout_width="40dp"
+                                                    android:layout_height="match_parent"
+                                                    android:layout_gravity="center_vertical"
+                                                    android:layout_margin="3dp"
+                                                    android:src="@mipmap/microphone" />
+
+                                                <EditText
+                                                    android:id="@+id/et_from"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent"
+                                                    android:layout_toEndOf="@+id/mic"
+                                                    android:layout_toRightOf="@+id/mic"
+                                                    android:background="@drawable/style_login_transparent"
+                                                    android:focusable="false"
+                                                    android:focusableInTouchMode="false"
+                                                    android:gravity="center"
+                                                    android:hint="از هر جای ایران"
+                                                    android:tag=""
+                                                    android:textSize="@dimen/sp13" />
+                                            </RelativeLayout>
+
+                                            <RelativeLayout
+                                                android:layout_width="0dp"
+                                                android:layout_height="match_parent"
+                                                android:layout_weight="3"
+                                                android:background="@drawable/style_textview"
+                                                android:gravity="center">
+
+                                                <TextView
+                                                    android:id="@+id/lbl_from"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="match_parent"
+                                                    android:drawablePadding="16dp"
+                                                    android:gravity="center"
+                                                    android:text="مبدا"
+                                                    android:textColor="#fff"
+                                                    android:textSize="13dp" />
+                                            </RelativeLayout>
+
+                                        </LinearLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="6dp"
+                                            android:orientation="horizontal">
+
+                                            <RelativeLayout
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="7"
+                                                android:background="@drawable/style_edittext"
+                                                android:gravity="center">
+
+                                                <ImageView
+                                                    android:id="@+id/mic2"
+                                                    android:layout_width="40dp"
+                                                    android:layout_height="match_parent"
+                                                    android:layout_gravity="center_vertical"
+                                                    android:layout_margin="3dp"
+                                                    android:src="@mipmap/microphone" />
+
+                                                <EditText
+                                                    android:id="@+id/et_to"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_alignParentEnd="true"
+                                                    android:layout_alignParentRight="true"
+                                                    android:layout_alignParentTop="true"
+                                                    android:layout_toEndOf="@+id/mic2"
+                                                    android:layout_toRightOf="@+id/mic2"
+                                                    android:background="@drawable/style_login_transparent"
+                                                    android:focusable="false"
+                                                    android:focusableInTouchMode="false"
+                                                    android:gravity="center"
+                                                    android:hint="به همه جای ایران"
+                                                    android:tag=""
+                                                    android:textSize="@dimen/sp13" />
+                                            </RelativeLayout>
+
+                                            <RelativeLayout
+                                                android:layout_width="0dp"
+                                                android:layout_height="match_parent"
+                                                android:layout_weight="3"
+                                                android:background="@drawable/style_textview"
+                                                android:gravity="center">
+
+                                                <TextView
+                                                    android:id="@+id/lbl_to"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="match_parent"
+                                                    android:drawablePadding="16dp"
+                                                    android:gravity="center"
+                                                    android:text="مقصد"
+                                                    android:textColor="#fff"
+                                                    android:textSize="13sp" />
+                                            </RelativeLayout>
+
+                                        </LinearLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="6dp"
+                                            android:orientation="horizontal">
+
+                                            <EditText
+                                                android:id="@+id/et_departure"
+                                                android:layout_width="0dp"
+                                                android:layout_height="match_parent"
+                                                android:layout_weight="7"
+                                                android:background="@drawable/style_edittext"
+                                                android:focusable="false"
+                                                android:focusableInTouchMode="false"
+                                                android:gravity="center"
+                                                android:hint="هر وقت میخای بری"
+                                                android:tag=""
+                                                android:textSize="@dimen/sp13" />
+
+                                            <RelativeLayout
+                                                android:layout_width="0dp"
+                                                android:layout_height="match_parent"
+                                                android:layout_weight="3"
+                                                android:background="@drawable/style_textview"
+                                                android:gravity="center">
+
+                                                <TextView
+                                                    android:id="@+id/lbl_departure"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="match_parent"
+                                                    android:drawablePadding="6dp"
+                                                    android:gravity="center"
+                                                    android:text="تاریخ رفت"
+                                                    android:textColor="#fff"
+                                                    android:textSize="13sp" />
+                                            </RelativeLayout>
+
+                                        </LinearLayout>
+
+
+                                    </LinearLayout>
+
+                                </LinearLayout>
+                            </android.support.v7.widget.CardView>
+
+                        </LinearLayout>
+
+                    </android.support.design.widget.CollapsingToolbarLayout>
+
+                </android.support.design.widget.AppBarLayout>
+
+                <include layout="@layout/fragment_home_content" />
+
+            </android.support.design.widget.CoordinatorLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/bottom_navigation_background"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <RelativeLayout
+                android:id="@+id/rl_after"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/txt_after"
+                    style="@style/txt_navigation_bottom"
+                    android:text="روز بعد" />
+            </RelativeLayout>
+
+            <View
+                style="@style/txt_navigation_bottom"
+                android:drawableTop="@mipmap/nav_search" />
+
+            <RelativeLayout
+                android:id="@+id/rl_before"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/txt_before"
+                    style="@style/txt_navigation_bottom"
+                    android:text="روز قبل" />
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/btn_new_event"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="8dp"
+            android:src="@mipmap/searchbar"
+            app:backgroundTint="#000"
+            app:borderWidth="0dp"
+            app:elevation="3dp"
+            app:fabSize="normal" />
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

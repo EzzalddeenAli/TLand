@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layoutDirection="ltr"
+    tools:context="ir.touristland.Activities.Flight.AddPassengerActivity">
+
+    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/toolbar_top"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/white">
+
+        <android.support.v7.widget.AppCompatImageButton
+            android:id="@+id/img_back"
+            android:layout_width="?attr/actionBarSize"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:background="@android:color/transparent"
+            card_view:srcCompat="@drawable/ic_back" />
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="مسافران"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/sp15" />
+
+    </android.support.v7.widget.Toolbar>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="3dp">
+
+        <TextView
+            android:id="@+id/txt_add_passenger"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/dp16"
+            android:padding="8dp"
+            android:text="اضافه کردن مسافر جدید"
+            android:textColor="#339fc4"
+            android:textStyle="bold"
+            android:textSize="13sp" />
+
+    </android.support.v7.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_passenger"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="9"
+            android:background="@drawable/bg_gradient"
+            android:cacheColorHint="@android:color/transparent"
+            android:clipToPadding="false"
+            android:divider="@null"
+            android:dividerHeight="5dp"
+            android:fadingEdgeLength="5dp"
+            android:headerDividersEnabled="false"
+            android:listSelector="@android:color/transparent"
+            android:requiresFadingEdge="vertical">
+
+        </android.support.v7.widget.RecyclerView>
+
+        <!--<Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_weight="1"
+            android:background="#339fc4"
+            android:textColor="#fff"
+            android:text="انتخاب این مسافران" />-->
+
+    </LinearLayout>
+</LinearLayout>

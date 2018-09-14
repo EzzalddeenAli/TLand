@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="ltr"
+    android:orientation="vertical"
+    tools:context=".Activities.Flight.PassengerActivity">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/toolbar_top"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/white"
+        android:elevation="3dp"
+        android:gravity="center_vertical">
+
+        <Button
+            android:id="@+id/btn_register"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:drawablePadding="@dimen/dp6"
+            android:drawableRight="@drawable/checked"
+            android:gravity="center"
+            android:padding="@dimen/dp4"
+            android:paddingLeft="@dimen/dp4"
+            android:paddingRight="@dimen/dp4"
+            android:text="ثبت"
+            android:textColor="@drawable/press_button_text_green"
+            android:textSize="@dimen/sp14" />
+
+        <android.support.v7.widget.AppCompatImageButton
+            android:id="@+id/img_back"
+            android:layout_width="?attr/actionBarSize"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:background="@android:color/transparent"
+            card_view:srcCompat="@drawable/ic_back" />
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:layout_marginRight="?attr/actionBarSize"
+            android:gravity="center_vertical"
+            android:text="درج مشخصات مسافر"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/sp15" />
+
+    </android.support.v7.widget.CardView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#ededed" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ededed"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:orientation="vertical">
+
+                <RadioGroup
+                    android:id="@+id/rg_sex"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dp8"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rd_female"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/style_edittext"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="خانم"
+                        android:textSize="@dimen/sp13" />
+
+                    <RadioButton
+                        android:id="@+id/rd_male"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/style_textview"
+                        android:button="@null"
+                        android:buttonTint="@color/colorAccent"
+                        android:gravity="center"
+                        android:text="آقا"
+                        android:checked="true"
+                        android:textColor="#fff"
+                        android:textSize="@dimen/sp13" />
+
+
+                </RadioGroup>
+
+                <android.support.v7.widget.CardView style="@style/postRegisterCard">
+
+                    <RelativeLayout
+                        style="@style/txtInputPostRegister"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <android.support.design.widget.TextInputLayout style="@style/txtInputPostRegister">
+
+                            <EditText
+                                android:id="@+id/et_name"
+                                style="@style/register"
+                                android:digits="@string/app_lan_fa"
+                                android:hint="نام(فارسی)"
+                                android:inputType="text"
+                                android:maxLength="20" />
+
+                            <requestFocus />
+
+                        </android.support.design.widget.TextInputLayout>
+                    </RelativeLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView style="@style/postRegisterCard">
+
+                    <RelativeLayout
+                        style="@style/txtInputPostRegister"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <android.support.design.widget.TextInputLayout style="@style/txtInputPostRegister">
+
+                            <EditText
+                                android:id="@+id/et_family"
+                                style="@style/register"
+                                android:digits="@string/app_lan_fa"
+                                android:hint="نام خانوادگی(فارسی)"
+                                android:inputType="text"
+                                android:maxLength="20" />
+
+                        </android.support.design.widget.TextInputLayout>
+                    </RelativeLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView style="@style/postRegisterCard">
+
+                    <RelativeLayout
+                        style="@style/txtInputPostRegister"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <android.support.design.widget.TextInputLayout style="@style/txtInputPostRegister">
+
+                            <EditText
+                                android:id="@+id/et_name_en"
+                                style="@style/register"
+                                android:digits="@string/app_lan"
+                                android:hint="نام(انگلیسی)"
+                                android:inputType="text"
+                                android:maxLength="25" />
+
+                        </android.support.design.widget.TextInputLayout>
+                    </RelativeLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView style="@style/postRegisterCard">
+
+                    <RelativeLayout
+                        style="@style/txtInputPostRegister"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <android.support.design.widget.TextInputLayout style="@style/txtInputPostRegister">
+
+                            <EditText
+                                android:id="@+id/et_family_en"
+                                style="@style/register"
+                                android:digits="@string/app_lan"
+                                android:hint="نام خانوادگی(انگلیسی)"
+                                android:inputType="text"
+                                android:maxLength="25" />
+
+                        </android.support.design.widget.TextInputLayout>
+                    </RelativeLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView style="@style/postRegisterCard">
+
+                    <RelativeLayout
+                        style="@style/txtInputPostRegister"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <android.support.design.widget.TextInputLayout style="@style/txtInputPostRegister">
+
+                            <EditText
+                                android:id="@+id/et_nationalcode"
+                                style="@style/register"
+                                android:hint="کد ملی"
+                                android:inputType="numberDecimal"
+                                android:maxLength="10" />
+
+                        </android.support.design.widget.TextInputLayout>
+                    </RelativeLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView style="@style/postRegisterCard">
+
+                    <RelativeLayout
+                        style="@style/txtInputPostRegister"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <android.support.design.widget.TextInputLayout style="@style/txtInputPostRegister">
+
+                            <EditText
+                                android:id="@+id/et_birthDay"
+                                style="@style/register"
+                                android:clickable="true"
+                                android:focusable="false"
+                                android:focusableInTouchMode="false"
+                                android:hint="تاریخ تولد"
+                                android:inputType="text"
+                                android:padding="5dp"
+                                android:paddingBottom="2dp" />
+
+                        </android.support.design.widget.TextInputLayout>
+                    </RelativeLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize" />
+
+
+            </LinearLayout>
+
+        </ScrollView>
+    </RelativeLayout>
+
+</LinearLayout>

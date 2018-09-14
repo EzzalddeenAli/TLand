@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="ir.touristland.Classes.HSH" />
+
+        <import type="java.lang.Integer" />
+
+        <import type="java.lang.String" />
+
+        <variable
+            name="RoomsItem"
+            type="ir.touristland.Models.HotelDetails.RoomsItem" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layoutDirection="ltr"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/rounded_corners_elevation">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingRight="5dp"
+                    android:paddingTop="5dp">
+
+                    <ir.touristland.Moudle.TriangleLabelView
+                        android:id="@+id/lbl_state"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        app:backgroundColor="@color/blue_btn_bg_color"
+                        app:corner="leftTop"
+                        app:labelBottomPadding="@dimen/dp4"
+                        app:labelCenterPadding="0dp"
+                        app:labelTopPadding="@dimen/dp16"
+                        app:primaryTextColor="@android:color/white"
+                        app:primaryTextSize="@dimen/sp11" />
+
+                    <LinearLayout
+                        android:layout_width="30dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <Button
+                            android:id="@+id/btn_Increase"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.5"
+                            android:gravity="center"
+                            android:text="+"
+                            android:visibility="gone" />
+
+                        <TextView
+                            android:id="@+id/txt_RoomCount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.5"
+                            android:gravity="center"
+                            android:text="۰"
+                            android:visibility="gone" />
+
+                        <Button
+                            android:id="@+id/btn_Decrease"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.5"
+                            android:gravity="center"
+                            android:text="-"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toLeftOf="@+id/img_post"
+                        android:layout_toStartOf="@+id/img_post"
+                        android:layout_weight="0.70"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/txt_RoomTypeName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:drawablePadding="5dp"
+                            android:ellipsize="end"
+                            android:gravity="right|center_vertical"
+                            android:maxLines="2"
+                            android:paddingRight="8dp"
+                            android:shadowColor="#A8A8A8"
+                            android:shadowDx="0"
+                            android:shadowDy="2"
+                            android:shadowRadius="5"
+                            android:text='@{RoomsItem.nameFa}'
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/sp14" />
+
+                        <TextView
+                            android:id="@+id/txt_description"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:bufferType="spannable"
+                            android:drawablePadding="8dp"
+                            android:gravity="right|center_vertical"
+                            android:lines="2"
+                            android:maxLines="2"
+                            android:paddingRight="8dp"
+                            android:text='@{RoomsItem.description}'
+                            android:textColor="#454545"
+                            android:textSize="@dimen/sp12" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="@dimen/dp100"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/img_room"
+                            android:layout_width="@dimen/dp110"
+                            android:layout_height="@dimen/dp95"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center"
+                            android:scaleType="centerCrop"
+                            android:src="@mipmap/ic_launcher2"
+                            android:transitionName="transitionn1" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/room_possibilities"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingRight="@dimen/dp4">
+
+                    <TextView
+                        android:id="@+id/txt_service"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:drawablePadding="@dimen/dp6"
+                        android:gravity="right|center_vertical"
+                        android:lines="2"
+                        android:maxLines="2"
+                        android:textSize="@dimen/sp10"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txt_extra_person"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.25"
+                        android:drawablePadding="@dimen/dp6"
+                        android:gravity="right|center_vertical"
+                        android:lines="2"
+                        android:maxLines="2"
+                        android:textSize="@dimen/sp10"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txt_beds"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.25"
+                        android:drawablePadding="@dimen/dp6"
+                        android:gravity="right|center_vertical"
+                        android:lines="2"
+                        android:maxLines="2"
+                        android:textSize="@dimen/sp10"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_corners_bottom_right"
+                    android:layout_gravity="bottom"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/btn_reserv"
+                        android:layout_width="100dp"
+                        android:layout_height="45dp"
+                        android:background="@drawable/rounded_corners_bottom_left"
+                        android:gravity="center"
+                        android:singleLine="true"
+                        android:text="رزرو"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp11"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txt_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingRight="@dimen/dp8"
+                        android:drawablePadding="@dimen/dp8"
+                        android:gravity="right|center_vertical"
+                        android:textColor="@color/white"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</layout>

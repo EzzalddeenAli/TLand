@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="ltr"
+    android:orientation="vertical"
+    tools:context="ir.touristland.Activities.Flight.PassengersListActivity">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/toolbar_top"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_gravity="center_vertical"
+        android:background="@android:color/white"
+        android:elevation="3dp">
+
+
+        <android.support.v7.widget.AppCompatImageButton
+            android:id="@+id/img_back"
+            android:layout_width="?attr/actionBarSize"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:background="@android:color/transparent"
+            card_view:srcCompat="@drawable/ic_back" />
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:layout_marginRight="?attr/actionBarSize"
+            android:gravity="center"
+            android:text="ورود مشخصات"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/sp15" />
+
+    </android.support.v7.widget.CardView>
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:fillViewport="true"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/dp32">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                card_view:srcCompat="@drawable/ic_airplane_ticket" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp8"
+                android:text="موبایل"
+                android:textColor="#005bb0"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/et_mobile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/style_passenger_edittext"
+                android:ems="10"
+                android:hint="شماره موبایل خود را وارد کنید"
+                android:inputType="numberDecimal"
+                android:padding="@dimen/dp8"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:padding="@dimen/dp8"
+                android:text="ایمیل"
+                android:textColor="#005bb0"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/et_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dp16"
+                android:background="@drawable/style_passenger_edittext"
+                android:ems="10"
+                android:hint="ایمیل خود را وارد کنید"
+                android:inputType="textEmailAddress"
+                android:padding="@dimen/dp8"
+                android:textSize="14sp" />
+            />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="بزرگسال"
+                android:textSize="@dimen/sp13" />
+
+            <LinearLayout
+                android:id="@+id/linearAdult"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:tag="Adult"></LinearLayout>
+
+            <TextView
+                android:id="@+id/txt_child"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="کودک"
+                android:textSize="@dimen/sp13" />
+
+            <LinearLayout
+                android:id="@+id/linearChild"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:tag="Child"></LinearLayout>
+
+            <TextView
+                android:id="@+id/txt_baby"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="نوزاد"
+                android:textSize="@dimen/sp13" />
+
+            <LinearLayout
+                android:id="@+id/linearBaby"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:tag="Baby"></LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/btn_select_ticket"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp50"
+        android:layout_gravity="bottom"
+        android:background="#00bcd5"
+        android:gravity="center"
+        android:text="تایید و ادامه"
+        android:textColor="#fff"
+        android:textSize="@dimen/sp15"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+</android.support.constraint.ConstraintLayout>

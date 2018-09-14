@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="ir.touristland">
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="ir.touristland.permission.MAPS_RECEIVE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+
+    <permission
+        android:name="ir.touristland.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature" />
+
+    <application
+        android:name=".Application"
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:replace="android:icon,android:allowBackup">
+
+        <meta-data
+            android:name="DATABASE"
+            android:value="touristland.db" />
+        <meta-data
+            android:name="VERSION"
+            android:value="1" />
+        <meta-data
+            android:name="QUERY_LOG"
+            android:value="true" />
+        <meta-data
+            android:name="DOMAIN_PACKAGE_NAME"
+            android:value="ir.touristland" />
+        <activity
+            android:name=".Activities.SplashActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Activities.WelcomeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".Activities.Flight.FlightActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
+        <activity
+            android:name=".Activities.IntroLoginActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
+        <activity
+            android:name=".Activities.Flight.CategoriesFilterDialog"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Transparent"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".Activities.ViewPagerActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/TransparentTheme1" />
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" />
+        <activity
+            android:name=".Activities.AboutUsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
+        <activity
+            android:name=".Activities.NoConnectioonActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme"
+            android:windowSoftInputMode="adjustPan|adjustResize" />
+        <activity
+            android:name=".Activities.Flight.PassengerActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
+
+        <activity
+            android:name=".Activities.Hotels.HotelListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
+
+        <activity
+            android:name=".Activities.Hotels.PlacesActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
+
+        <service
+            android:name=".Reciver.MyFirebaseMessagingService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".Reciver.MyFirebaseInstanceIDService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+
+        <!--
+        <receiver
+            android:name=".Reciver.IncomingSms"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter android:priority="2147483647" >
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+        -->
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@mipmap/ic_launcher" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyD4Cc8FwY8aojFAtPMfLK78eFVxNpKX6cU" />
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="ir.touristland.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+        <activity
+            android:name=".Activities.Flight.AddPassengerActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
+        <activity
+            android:name=".Activities.Flight.PassengersListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
+        <activity
+            android:name=".Activities.Hotels.PassengersListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
+        <activity
+            android:name=".Activities.Flight.FlightDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
+        <activity
+            android:name=".Activities.Flight.AssignmentActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
+        <activity
+            android:name=".Activities.Hotels.AssignmentActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
+        <activity
+            android:name=".Activities.Kishgardi.KishgardiTypesActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
+        <activity
+            android:name=".Activities.Hotels.KishgardiCentersActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
+
+        <activity
+            android:name=".Activities.Hotels.HotelsCentersActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
+        <activity
+            android:name=".Activities.Hotels.HotelsTypesActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
+
+        <activity android:name=".Activities.TicketActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
+
+        <activity android:name=".Activities.Kishgardi.KishgardiCenterDetailsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
+
+        <activity android:name=".Activities.Hotels.HotelDetailsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
+
+    </application>
+
+</manifest>

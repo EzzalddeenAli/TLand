@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layoutDirection="ltr"
+    tools:context="ir.touristland.Activities.FlightDetailActivity">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/toolbar_top"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/white"
+        android:elevation="3dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="right|center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/toolbar_title"
+                style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:gravity="center_vertical"
+                android:text="فاکتور خرید"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/sp14" />
+
+            <android.support.v7.widget.AppCompatImageButton
+                android:id="@+id/img_back"
+                android:layout_width="?attr/actionBarSize"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:background="@android:color/transparent"
+                card_view:srcCompat="@drawable/ic_back" />
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:fillViewport="true"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txt_cities"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="@dimen/dp8"
+                android:textColor="#000"
+                android:textSize="@dimen/sp14" />
+
+            <TextView
+                android:id="@+id/txt_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingBottom="@dimen/dp8"
+                android:textColor="#000"
+                android:textSize="@dimen/sp14" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/dp8"
+                android:paddingRight="@dimen/dp8">
+
+                <TextView
+                    android:id="@+id/txt_systemic"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="left"
+                    android:shadowColor="#A8A8A8"
+                    android:shadowDx="0"
+                    android:shadowDy="2"
+                    android:shadowRadius="5"
+                    android:textColor="#ffc430"
+                    android:textSize="@dimen/sp13" />
+
+                <TextView
+                    android:id="@+id/txt_airline"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:shadowColor="#A8A8A8"
+                    android:shadowDx="0"
+                    android:shadowDy="2"
+                    android:shadowRadius="5"
+                    android:textColor="#ed5565"
+                    android:textSize="@dimen/sp13" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ededed"
+                android:gravity="right"
+                android:paddingBottom="@dimen/dp6"
+                android:paddingRight="@dimen/dp12"
+                android:paddingTop="@dimen/dp6"
+                android:text="مشخصات خریدار"
+                android:textColor="#555"
+                android:textSize="@dimen/sp13"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/dp8"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="right|center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/txt_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:paddingLeft="8dp"
+                        android:textColor="#555"
+                        android:textSize="@dimen/dp12"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="نام :"
+                        android:textSize="@dimen/sp12" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="right|center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/txt_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:paddingLeft="8dp"
+                        android:textColor="#555"
+                        android:textSize="@dimen/dp12"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ایمیل :"
+                        android:textSize="@dimen/sp12" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="right|center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/txt_mobile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:paddingLeft="8dp"
+                        android:textColor="#555"
+                        android:textSize="@dimen/dp12"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="شماره موبایل :"
+                        android:textSize="@dimen/sp12" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#dedede" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ededed"
+                android:gravity="right"
+                android:paddingBottom="@dimen/dp6"
+                android:paddingRight="@dimen/dp12"
+                android:paddingTop="@dimen/dp6"
+                android:text="مشخصات مسافران"
+                android:textColor="#555"
+                android:textSize="@dimen/sp13"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/linear_passengers"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="@dimen/dp8">
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#000" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#efefef"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/dp8"
+            android:paddingRight="@dimen/dp8">
+
+            <TextView
+                android:id="@+id/txt_sumPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:textColor="#0f7e92"
+                android:textSize="@dimen/sp14" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="مبلغ قابل پرداخت :"
+                android:textColor="#000"
+                android:textSize="@dimen/sp14" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/btn_select_ticket"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp50"
+            android:layout_gravity="bottom"
+            android:background="#00bcd5"
+            android:gravity="center"
+            android:text="پرداخت آنلاین"
+            android:textColor="#fff"
+            android:textSize="@dimen/sp15"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
