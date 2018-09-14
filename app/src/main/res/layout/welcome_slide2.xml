@@ -29,9 +29,9 @@
         android:layout_marginTop="@dimen/dp20"
         android:gravity="center"
         android:text="آژانس مسافرتی کیش، همسفری مطمئن"
-        android:textStyle="bold"
         android:textColor="@android:color/black"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/customTextViewBold3"
@@ -44,7 +44,7 @@
         android:layout_marginRight="@dimen/dp16"
         android:gravity="center"
         android:text="با ما آرامش در سفر را تجربه کنید."
-        android:textStyle="bold"
         android:textColor="@android:color/darker_gray"
-        android:textSize="13sp" />
+        android:textSize="13sp"
+        android:textStyle="bold" />
 </LinearLayout>

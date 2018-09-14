@@ -117,6 +117,7 @@ public class SearchHotelFragment extends Fragment implements View.OnClickListene
             params.put(getString(R.string.city), etFrom.getTag().toString());
             params.put(getString(R.string.PersianFrom), etFrom.getText().toString());
             params.put(getString(R.string.PersianDate), etDeparture.getText().toString());
+            params.put("numberOfNights", (spStayingTime.getSelectedItemPosition() + 1) + "");
             /*params.put(getString(R.string.ChechinDateStr), etDeparture.getTag().toString());
             params.put(getString(R.string.PersianDateReturn), etReturn.getText().toString());
             params.put(getString(R.string.ChechoutDateStr), etReturn.getTag().toString());
@@ -176,6 +177,15 @@ public class SearchHotelFragment extends Fragment implements View.OnClickListene
                         ((EditText) v).setText(HSH.toPersianNumber(DayName + " " + day + " " + monthName + " " + year));
                         v.setTag(year + "/" + month + "/" + day);
                         v.setContentDescription(jCal.PersianToGregorian(year, month, day));
+                        String date = "";
+                        if ((month + "").length() == 1)
+                            date = (year + "").substring(2, 4) + "-0" + month + "-" + day;
+                        if ((day + "").length() == 1)
+                            date = (year + "").substring(2, 4) + "-" + month + "-0" + day;
+                        if ((day + "").length() == 1 && (month + "").length() == 1)
+                            date = (year + "").substring(2, 4) + "-0" + month + "-0" + day;
+
+                        params.put("inDate", date);
                     }
                 })
                 .show(getActivity().getSupportFragmentManager(), "");

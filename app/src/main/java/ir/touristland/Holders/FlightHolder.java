@@ -12,7 +12,7 @@ import ir.touristland.R;
 public class FlightHolder extends RecyclerView.ViewHolder {
 
     public TextView txtStartTime;
-    public TextView txt_title;
+    public TextView txtTitle, txtAirlineTitle;
     public ImageView img_post;
     public TriangleLabelView lbl_state;
 
@@ -22,8 +22,9 @@ public class FlightHolder extends RecyclerView.ViewHolder {
         super(binding.getRoot());
         this.binding = binding;
 
+        this.txtAirlineTitle = binding.getRoot().findViewById(R.id.txt_airline_title);
         this.txtStartTime = binding.getRoot().findViewById(R.id.txt_start_time);
-        this.txt_title = binding.getRoot().findViewById(R.id.txt_title);
+        this.txtTitle = binding.getRoot().findViewById(R.id.txt_title);
         this.img_post = binding.getRoot().findViewById(R.id.img_post);
         this.lbl_state = binding.getRoot().findViewById(R.id.lbl_state);
     }

@@ -1,6 +1,8 @@
 package ir.touristland.Activities.Hotels;
 
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -10,10 +12,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.CardView;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,6 +37,7 @@ import ir.touristland.R;
 import ir.touristland.SliderTypes.BaseSliderView;
 import ir.touristland.SliderTypes.SliderLayout;
 import ir.touristland.SliderTypes.TextSliderView;
+import ir.touristland.databinding.ActivityHotelDetailsBinding;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Retrofit;
@@ -60,10 +61,11 @@ public class HotelDetailsActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_hotel_details);
+        //setContentView(R.layout.activity_hotel_details);
+        ActivityHotelDetailsBinding binding = DataBindingUtil.setContentView(HotelDetailsActivity.this, R.layout.activity_hotel_details);
         Application.getComponent().Inject(this);
         hotelItem = (ResultItem) getIntent().getExtras().getSerializable("Center");
-        ((TextView) findViewById(R.id.toolbar_title)).setText("هتل " + hotelItem.getNameFa());
+        binding.setHotelItem(hotelItem);
         getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         pager1 = findViewById(R.id.pager1);
         //txtPrice = findViewById(R.id.txt_price);
@@ -78,6 +80,15 @@ public class HotelDetailsActivity extends BaseActivity {
         i = findViewById(R.id.toolbar_layout);
         i.setTitle("");
         tabHost.setupWithViewPager(pager);
+        findViewById(R.id.txt_map).setOnClickListener(view ->
+        {
+            Intent intent;
+            intent = new Intent(HotelDetailsActivity.this, HotelLocationActivity.class);
+                    /*ActivityOptionsCompat options = ActivityOptionsCompat.
+                            makeSceneTransitionAnimation((Activity) mContext, Holder.imgPost, "transitionn1");*/
+            intent.putExtra("Center", hotelItem);
+            startActivity(intent);
+        });
 
         GetHotelDetails();
     }
@@ -93,11 +104,29 @@ public class HotelDetailsActivity extends BaseActivity {
             public void onResponse(Call<HotelDetail> call, retrofit2.Response<HotelDetail> response) {
                 try {
                     if (response.isSuccessful()) {
+                        appBar.setVisibility(View.VISIBLE);
                         fFeed = response.body();
                         setupViewPager(pager);
                         pager.setCurrentItem(2);
                         HSH.setTypeFace(tabHost, Application.font);
-                        TextSliderView textSliderView ;
+                        tabHost.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+                            @Override
+                            public void onTabSelected(TabLayout.Tab tab) {
+                                tabHost.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        tab.getCustomView().setBackgroundColor(Color.parseColor("#ededed"));
+                                    }
+                                });
+                            }
+                            @Override
+                            public void onTabUnselected(TabLayout.Tab tab) {
+                            }
+                            @Override
+                            public void onTabReselected(TabLayout.Tab tab) {
+                            }
+                        });
+                        TextSliderView textSliderView;
                         for (int i = 0; i < /*fFeed.getResult().getImages().size()*/5; i++) {
                             textSliderView = new TextSliderView(HotelDetailsActivity.this);
                             textSliderView
@@ -125,7 +154,7 @@ public class HotelDetailsActivity extends BaseActivity {
             @Override
             public void onFailure(Call<HotelDetail> call, Throwable t) {
                 if (NetworkUtils.getConnectivity(HotelDetailsActivity.this) != false) {
-                    // GetHotelPossibilities();
+                    GetHotelDetails();
                 } else {
 
                 }
@@ -171,10 +200,26 @@ public class HotelDetailsActivity extends BaseActivity {
 
         @Override
         public Fragment getItem(int position) {
-            if(!mFragmentList.get(position).isAdded())
+            if (!mFragmentList.get(position).isAdded())
                 return mFragmentList.get(position);
             else
                 return null;
+        }
+
+        @Override
+        public boolean isViewFromObject(View view, Object object) {
+            if (object != null) {
+                return ((Fragment) object).getView() == view;
+            } else {
+                return false;
+            }
+        }
+
+        @Override
+        public Object instantiateItem(ViewGroup container, int position) {
+            Object obj = super.instantiateItem(container, position);
+            //pager.setObjectForPosition(obj, position);
+            return obj;
         }
 
         @Override

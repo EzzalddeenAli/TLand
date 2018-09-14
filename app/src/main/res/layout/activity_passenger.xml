@@ -103,9 +103,9 @@
                         android:background="@drawable/style_textview"
                         android:button="@null"
                         android:buttonTint="@color/colorAccent"
+                        android:checked="true"
                         android:gravity="center"
                         android:text="آقا"
-                        android:checked="true"
                         android:textColor="#fff"
                         android:textSize="@dimen/sp13" />
 

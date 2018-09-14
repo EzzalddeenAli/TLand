@@ -12,6 +12,7 @@ public class NumberPassenger {
     public int numberAdult = 1;
     public int numberChild = 0;
     public int numberBaby = 0;
+    public String ReqNo = "";
 
     public Map<String, String> params = new HashMap<>();
 
@@ -52,5 +53,13 @@ public class NumberPassenger {
 
     public void setParams(Map<String, String> params) {
         this.params = params;
+    }
+
+    public String getReqNo() {
+        return ReqNo;
+    }
+
+    public void setReqNo(String reqNo) {
+        ReqNo = reqNo;
     }
 }

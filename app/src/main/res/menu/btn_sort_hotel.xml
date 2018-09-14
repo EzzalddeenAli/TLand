@@ -9,11 +9,11 @@
     <item
         android:id="@+id/two"
         android:title="کمترین قیمت"
-        android:titleCondensed="lowestprice"/>
+        android:titleCondensed="lowestprice" />
 
     <item
         android:id="@+id/three"
         android:title="بیشترین قیمت"
-        android:titleCondensed="Highestprice"/>
+        android:titleCondensed="Highestprice" />
 
 </menu>

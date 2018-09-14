@@ -15,6 +15,6 @@
         android:padding="8dp"
         android:tag=""
         android:textColor="#ffffff"
-        android:textStyle="bold"
-        android:textSize="@dimen/sp14" />
+        android:textSize="@dimen/sp14"
+        android:textStyle="bold" />
 </LinearLayout>

@@ -10,8 +10,8 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import ir.touristland.Activities.Flight.AddPassengerActivity;
 import ir.touristland.Activities.BaseActivity;
+import ir.touristland.Activities.Flight.AddPassengerActivity;
 import ir.touristland.Application;
 import ir.touristland.Classes.HSH;
 import ir.touristland.Models.NumberPassenger;
@@ -27,7 +27,7 @@ public class PassengersListActivity extends BaseActivity implements View.OnClick
     private void DeclareElements() {
         findViewById(R.id.img_back).setOnClickListener(this);
         etMobile = findViewById(R.id.et_mobile);
-        etEmail = findViewById(R.id.et_email);
+        //etEmail = findViewById(R.id.et_email);
         btnSelectTicket = findViewById(R.id.btn_select_ticket);
         btnSelectTicket.setOnClickListener(this);
         etMobile.setText(HSH.toPersianNumber(Application.preferences.getString("Mobile", "")));

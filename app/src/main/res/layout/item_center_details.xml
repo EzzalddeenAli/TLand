@@ -15,8 +15,8 @@
         android:background="@drawable/post_details_border"
         android:gravity="right"
         android:inputType="textMultiLine"
-        android:padding="6dp"
         android:lineSpacingMultiplier="1.25"
+        android:padding="6dp"
         android:textColor="@android:color/black"
         android:textSize="@dimen/sp13" />
 

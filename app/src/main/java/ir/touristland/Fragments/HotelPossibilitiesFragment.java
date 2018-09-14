@@ -28,11 +28,14 @@ public class HotelPossibilitiesFragment extends Fragment {
 
         if (rootView == null) {
             rootView = inflater.inflate(R.layout.fragment_hotel_possibilities, container, false);
-            llPossibilities = rootView.findViewById(R.id.ll_possibilities);
-            llPossibilitiesRooms = rootView.findViewById(R.id.ll_possibilities_rooms);
-            //GetHotelPossibilities();
-            getPossibilities(HotelDetailsActivity.fFeed.getResult().getOptions().getHotelOptions());
-            getPossibilitiesRooms(HotelDetailsActivity.fFeed.getResult().getOptions().getRoomOptions());
+            try {
+                llPossibilities = rootView.findViewById(R.id.ll_possibilities);
+                llPossibilitiesRooms = rootView.findViewById(R.id.ll_possibilities_rooms);
+                //GetHotelPossibilities();
+                getPossibilities(HotelDetailsActivity.fFeed.getResult().getOptions().getHotelOptions());
+                getPossibilitiesRooms(HotelDetailsActivity.fFeed.getResult().getOptions().getRoomOptions());
+            } catch (Exception e) {
+            }
         }
         return rootView;
     }

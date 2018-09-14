@@ -9,9 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -30,7 +30,9 @@ public class HotelAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     private final int VIEW_TYPE_ITEM = 1;
     @Inject
     ImageLoader imageLoader;
-    private List<ResultItem> feedItemList = new ArrayList<>();
+    @Inject
+    DisplayImageOptions options;
+    private List<ResultItem> feedItemList;
     private Context mContext;
 
     public HotelAdapter(Context context, List<ResultItem> feedItemList) {
@@ -43,8 +45,6 @@ public class HotelAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, final int i) {
 
         if (i == VIEW_TYPE_ITEM) {
-            View v;
-            //v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_main, null);
             ViewDataBinding item = (DataBindingUtil.inflate(LayoutInflater.from(viewGroup.getContext()), R.layout.item_hotel, viewGroup, false));
             return new HotelHolder(item);
 
@@ -85,7 +85,11 @@ public class HotelAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                 //HSH.vectorRight(mContext, Holder.txtAddress, R.drawable.ic_location);
 
                 Holder.txtDiscount.setText("تا " + HSH.toPersianNumber(feedItemList.get(i).getDiscount()) + "% تخفیف");
-                imageLoader.displayImage(feedItemList.get(i).getImages(), Holder.imgPost);
+                if (feedItemList.get(i).getImages().contains("http"))
+                    imageLoader.displayImage(feedItemList.get(i).getImages(), Holder.imgPost, options);
+                else
+                    imageLoader.displayImage("https://eghamat24.com/app/public/new_images/270x150/" + feedItemList.get(i).getImages(), Holder.imgPost, options);
+
                 if (0 == feedItemList.get(i).getPrice())
                     Holder.txtPrice.setVisibility(View.INVISIBLE);
                 else {

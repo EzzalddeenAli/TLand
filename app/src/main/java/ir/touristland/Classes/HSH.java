@@ -37,6 +37,8 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AccelerateInterpolator;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.animation.DecelerateInterpolator;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -284,32 +286,16 @@ public class HSH {
         return out;
     }
 
-    public static String getCompleteAddress(Context context, double LATITUDE, double LONGITUDE) {
-        String strAdd = "";
-        Locale lHebrew = new Locale("fa");
-        Geocoder geocoder = new Geocoder(context, lHebrew);
-        try {
-            List<Address> addresses = geocoder.getFromLocation(LATITUDE, LONGITUDE, 1);
-            if (addresses != null) {
+    public static void  animate(Context cn, ViewGroup dialog) {
 
-                Address address = addresses.get(0);
-                String street = address.getThoroughfare();
-                String city = addresses.get(0).getLocality();
-                String state = addresses.get(0).getAdminArea();
-//				String country    = addresses.get(0).getCountryName();
-//				String postalCode = addresses.get(0).getPostalCode();
-//				String knownName  = addresses.get(0).getFeatureName();
-
-                if (street != null)
-                    strAdd = street;
-                else
-                    strAdd = city;
-            } else {
-            }
-
-        } catch (Exception e) {
+        for (int i =0; i < dialog.getChildCount(); i++) {
+            Animation animation   =    AnimationUtils.loadAnimation(cn, R.anim.rv_anim);
+            animation.setDuration(1000);
+            View v = dialog.getChildAt(0);
+            v.setAnimation(animation);
+            v.animate();
+            animation.start();
         }
-        return strAdd;
     }
 
     //////////////////////////////////////////////////////////////////////////

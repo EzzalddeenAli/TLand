@@ -52,7 +52,7 @@ public class ImageLoaderMoudle {
         return new DisplayImageOptions.Builder()
                 .showImageOnFail(R.mipmap.ic_launcher2)
                 .showImageForEmptyUri(R.mipmap.ic_launcher2)
-                .displayer(new RoundedBitmapDisplayer(1))
+                .displayer(new RoundedBitmapDisplayer(5))
                 .displayer(new FadeInBitmapDisplayer(500))
                 .showImageOnLoading(R.mipmap.ic_launcher2)
                 .cacheInMemory(true).cacheOnDisc(true).imageScaleType(ImageScaleType.EXACTLY)

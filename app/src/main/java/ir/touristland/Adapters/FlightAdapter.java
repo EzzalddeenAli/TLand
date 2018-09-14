@@ -5,14 +5,22 @@ import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v7.content.res.AppCompatResources;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.FailReason;
+import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +41,9 @@ public class FlightAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     private final int VIEW_TYPE_ITEM = 1;
     @Inject
     ImageLoader imageLoader;
-    private List<Response> feedItemList = new ArrayList<>();
+    @Inject
+    DisplayImageOptions options;
+    private List<Response> feedItemList ;
     private Context mContext;
 
     public FlightAdapter(Context context, List<Response> feedItemList) {
@@ -75,10 +85,31 @@ public class FlightAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                     Holder.lbl_state.setPrimaryText("چارتری");
                 }*/
                 //HSH.vectorRight(mContext, Holder.txtCount, R.drawable.ic_chair);
-                HSH.vectorRight(mContext, Holder.txt_title, R.drawable.ic_airline);
+                HSH.vectorRight(mContext, Holder.txtTitle, R.drawable.ic_airline);
                 HSH.vectorRight(mContext, Holder.txtStartTime, R.drawable.ic_oclock);
 
-                imageLoader.displayImage(mContext.getString(R.string.url2) + "/Files/Airlines/" + feedItemList.get(i).getAirlineCode() + ".png?ver=1", Holder.img_post);
+                imageLoader.displayImage(mContext.getString(R.string.url2) + "Files/Airlines/" + feedItemList.get(i).getAirlineCode() + ".png?ver=1", Holder.img_post, options, new ImageLoadingListener() {
+                    @Override
+                    public void onLoadingStarted(String imageUri, View view) {
+
+                    }
+
+                    @Override
+                    public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
+
+                    }
+
+                    @Override
+                    public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
+                        Drawable drawable = new BitmapDrawable(mContext.getResources(), loadedImage);
+                        Holder.txtAirlineTitle.setCompoundDrawablesWithIntrinsicBounds(null, null, drawable, null);
+                    }
+
+                    @Override
+                    public void onLoadingCancelled(String imageUri, View view) {
+
+                    }
+                });
 
                 Holder.itemView.setOnClickListener(v ->
                 {

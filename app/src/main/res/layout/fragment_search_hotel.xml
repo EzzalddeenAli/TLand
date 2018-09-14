@@ -1,14 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout android:layout_width="match_parent"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layoutDirection="ltr"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:orientation="vertical">
 
     <android.support.v7.widget.CardView
         android:id="@+id/ll_search"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/btn_search"
+                android:layout_width="wrap_content"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_above="@+id/imageView"
+                android:layout_centerHorizontal="true"
+                android:drawableRight="@mipmap/searchbar"
+                android:drawablePadding="@dimen/dp8"
+                android:paddingLeft="@dimen/dp32"
+                android:paddingRight="@dimen/dp32"
+                android:text="جستجو"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp16"
+                android:theme="@style/AppThemeButton" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom"
+                android:scaleType="fitXY"
+                app:srcCompat="@mipmap/hotel_bk" />
+
+        </RelativeLayout>
 
         <LinearLayout
 
@@ -58,7 +89,7 @@
                             android:focusable="false"
                             android:focusableInTouchMode="false"
                             android:gravity="center"
-                            android:hint="از هر جای ایران"
+                            android:hint="به کدام شهر می خواهید سفر کنید ؟"
                             android:tag=""
                             android:textSize="@dimen/sp14" />
                     </RelativeLayout>
@@ -95,11 +126,11 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="7"
                         android:background="@drawable/style_edittext"
+                        android:contentDescription=""
                         android:focusable="false"
                         android:focusableInTouchMode="false"
                         android:gravity="center"
                         android:hint="هر وقت میخای بری"
-                        android:contentDescription=""
                         android:tag=""
                         android:textSize="@dimen/sp14" />
 
@@ -116,7 +147,7 @@
                             android:layout_height="wrap_content"
                             android:drawablePadding="6dp"
                             android:gravity="center"
-                            android:text="تاریخ رفت"
+                            android:text="تاریخ شروع سفر"
                             android:textColor="#fff"
                             android:textSize="@dimen/sp14" />
                     </RelativeLayout>
@@ -137,12 +168,12 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="7"
                         android:background="@drawable/style_edittext"
+                        android:contentDescription=""
+                        android:entries="@array/stayingtime"
                         android:focusable="false"
                         android:focusableInTouchMode="false"
                         android:gravity="center"
                         android:tag=""
-                        android:entries="@array/stayingtime"
-                        android:contentDescription=""
                         android:textSize="@dimen/sp14" />
 
                     <RelativeLayout
@@ -164,24 +195,6 @@
 
                     </RelativeLayout>
                 </LinearLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <Button
-                        android:id="@+id/btn_search"
-                        android:layout_width="match_parent"
-                        android:layout_height="?attr/actionBarSize"
-                        android:drawableRight="@mipmap/searchbar"
-                        android:layout_alignParentBottom="true"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:theme="@style/AppThemeButton"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/sp16"
-                        android:text="جستجو" />
-                </RelativeLayout>
 
             </LinearLayout>
 

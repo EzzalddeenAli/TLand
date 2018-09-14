@@ -6,9 +6,9 @@
     android:id="@+id/nest_scrollview"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layoutDirection="ltr"
     android:fillViewport="true"
     android:isScrollContainer="true"
+    android:layoutDirection="ltr"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_flight">
 

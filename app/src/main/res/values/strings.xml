@@ -132,6 +132,7 @@
     <string name="start">ورود</string>
     <string name="image">https://eghamat24.com/app/public/new_images/600x460/</string>
     <string name="url">https://flight.ravisservice.ir/</string>
+    <!--<string name="url">https://iid.googleapis.com</string>-->
     <string name="ravisUrl">https://ravisservice.ir/</string>
     <string name="url2">https://www.ravis.ir/</string>
     <string name="Notifurl">https://fcm.googleapis.com</string>
@@ -323,8 +324,6 @@
 	c-0.6,0-1.1,0.2-1.6,0.5c-0.5,0.3-0.9,0.7-1.2,1.2c-0.3,0.5-0.6,0.9-0.7,1.4c-0.2,0.5-0.3,0.9-0.3,1.3c0,0.9,0.4,1.4,1.1,1.8
 	s2.1,0.5,4.1,0.5H270.1z</item>
     </string-array>
-
-
 
 
     <string-array name="font_intro_svg">
@@ -1240,5 +1239,6 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="GeorgianDate">GeorgianDate</string>
+    <string name="eghamatUrl">https://eghamat24.com/</string>
 
 </resources>

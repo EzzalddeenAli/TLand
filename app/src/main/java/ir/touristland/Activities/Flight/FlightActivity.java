@@ -1,10 +1,12 @@
 package ir.touristland.Activities.Flight;
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.MenuItem;
 import android.view.SubMenu;
 import android.view.View;
@@ -25,10 +27,12 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
 import ir.touristland.Activities.BaseActivity;
+import ir.touristland.Activities.IntroLoginActivity;
 import ir.touristland.Activities.UpdateChecker;
 import ir.touristland.Adapters.FlightAdapter;
 import ir.touristland.Application;
@@ -49,19 +53,19 @@ import retrofit2.Retrofit;
 public class FlightActivity extends BaseActivity implements View.OnClickListener/*, HideActionbar*/ {
 
     public static LinearLayout ll_bottomNavigation;
-
-    TextView txtBefore, txtAfter, txtSort, txtFilter;
-    JDF mToday = new JDF();
-    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
     @Inject
     Retrofit retrofit;
+    private String FORMAT = "%02d:%02d";
+    private TextView txtBefore, txtAfter, txtSort, txtFilter, txtCounter;
+    private JDF mToday = new JDF();
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
     private List<Response> feedItemList = new ArrayList<>();
     private RecyclerView rv;
     private Map<String, String> params = new HashMap<>();
     private SwipeRefreshLayout swipeContainer;
     private ProgressWheel pb;
     private FlightAdapter adapter;
-    private LinearLayoutManager layoutManager;
+    //private LinearLayoutManager layoutManager;
 
     public void DeclareElements() {
         ll_bottomNavigation = findViewById(R.id.ll_bottom);
@@ -69,8 +73,9 @@ public class FlightActivity extends BaseActivity implements View.OnClickListener
         pb = findViewById(R.id.pb);
         rv = findViewById(R.id.rv_paye);
         rv.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(FlightActivity.this);
-        rv.setLayoutManager(layoutManager);
+        //layoutManager = new LinearLayoutManager(FlightActivity.this);
+        //rv.setLayoutManager(layoutManager);
+        rv.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         adapter = new FlightAdapter(FlightActivity.this, feedItemList);
         rv.setAdapter(adapter);
         rv.setOnScrollListener(new HidingScrollListener() {
@@ -87,6 +92,23 @@ public class FlightActivity extends BaseActivity implements View.OnClickListener
 
         HSH.vectorRight(FlightActivity.this, findViewById(R.id.lbl_from), R.drawable.ic_take_off);
         HSH.vectorRight(FlightActivity.this, findViewById(R.id.lbl_to), R.drawable.ic_landing);
+        txtCounter = findViewById(R.id.txt_counter);
+    }
+
+    public void SubscribeTopic(String ServiceId) {
+        Call<ResponseBody> call = retrofit.create(ApiInterface.class).Subscribe("duSvfhy73LY:APA91bGCX4wbXKg5Si0fmoGxrJj-n3e3mg8P8vp3D-4WDj5XT68Dc3R-buiThVXb_X-QlD2LBIFXgI9Q_iMW7V7qxThn7fgbRVfUzYz-TSxbjTDUzpkN6Kw97b8aQh5K8dBKwNxGZosN", ServiceId);
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
+                if (response.code() == 200) {
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                HSH.showtoast(FlightActivity.this, "خطا در ارسال");
+            }
+        });
     }
 
     @Override
@@ -94,6 +116,15 @@ public class FlightActivity extends BaseActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flight);
         Application.getComponent2().Inject(this);
+
+        /*String[] toppings = { "56-02","58-07", "53-04","62-02","59-07", "65-02"
+                ,"66-02","51-01", "51-02","55-02","53-02", "57-02","61-02","52-02", "60-01"
+                ,"60-02","50-01", "64-02","56-02","66-01", "55-10","53-10","57-09", "61-01"
+                ,"52-10","56-09", "50-09","58-01","59-01", "65-01","58-09","64-09", "64-01"
+                ,"50-01","52-01", "57-01","53-01","55-01", "66-08","65-08","59-10", "62-01", "56-01"};
+        for (int i = 0; i<toppings.length; i++)
+            SubscribeTopic(toppings[i]);*/
+
         DeclareElements();
         UpdateChecker();
         params = NumberPassenger.getInstance().getParams();
@@ -252,16 +283,28 @@ public class FlightActivity extends BaseActivity implements View.OnClickListener
                 try {
                     if (response.code() == 200) {
                         {
+                            new CountDownTimer(300000, 1000) {
+
+                                public void onTick(long millisUntilFinished) {
+                                    txtCounter.setText(String.format(FORMAT,
+                                            TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished) - TimeUnit.HOURS.toMinutes(
+                                                    TimeUnit.MILLISECONDS.toHours(millisUntilFinished)),
+                                            TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) - TimeUnit.MINUTES.toSeconds(
+                                                    TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));
+                                }
+
+                                public void onFinish() {
+                                    SearchFlight();
+                                }
+                            }.start();
                             try {
                                 swipeContainer.setRefreshing(false);
-                                List<Response> list = response.body();
+                                feedItemList.addAll(response.body());
 
-                                if (list.size() == 0)
+                                if (feedItemList.size() == 0)
                                     HSH.showtoast(FlightActivity.this, "موردی یافت نشد");
-                                for (Response m : list) {
-                                    feedItemList.add(m);
+                                for (Response m : feedItemList)
                                     AirLine(m.getAirlineCode(), m);
-                                }
 
                                 Collections.sort(feedItemList, new FlightLowestPriceComparator());
                                 adapter.notifyDataSetChanged();

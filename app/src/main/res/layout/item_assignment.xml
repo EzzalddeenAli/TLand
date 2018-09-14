@@ -21,8 +21,8 @@
             android:gravity="left"
             android:paddingLeft="@dimen/dp8"
             android:textColor="#555"
-            android:textStyle="bold"
-            android:textSize="@dimen/dp12" />
+            android:textSize="@dimen/dp12"
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -48,8 +48,8 @@
             android:paddingLeft="@dimen/dp8"
             android:text="TextView"
             android:textColor="#555"
-            android:textStyle="bold"
-            android:textSize="@dimen/dp12" />
+            android:textSize="@dimen/dp12"
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -75,8 +75,8 @@
             android:gravity="left"
             android:paddingLeft="@dimen/dp8"
             android:textColor="#0f7e92"
-            android:textStyle="bold"
-            android:textSize="@dimen/dp12" />
+            android:textSize="@dimen/dp12"
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"

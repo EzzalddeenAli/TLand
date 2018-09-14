@@ -1,9 +1,9 @@
-<android.support.v4.widget.NestedScrollView android:id="@+id/ll_advertisdetails"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_advertisdetails"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="@dimen/dp4"
-    android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,8 +25,8 @@
             android:paddingTop="@dimen/dp4"
             android:text="امکانات هتل"
             android:textColor="@android:color/white"
-            android:textStyle="bold"
-            android:textSize="@dimen/sp14" />
+            android:textSize="@dimen/sp14"
+            android:textStyle="bold" />
 
         <View
             android:layout_width="match_parent"
@@ -60,8 +60,8 @@
             android:paddingTop="@dimen/dp4"
             android:text="امکانات مشترک اتاق ها"
             android:textColor="@android:color/white"
-            android:textStyle="bold"
-            android:textSize="@dimen/sp14" />
+            android:textSize="@dimen/sp14"
+            android:textStyle="bold" />
 
         <View
             android:layout_width="match_parent"

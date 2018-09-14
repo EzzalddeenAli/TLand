@@ -25,7 +25,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon,android:allowBackup">
-
         <meta-data
             android:name="DATABASE"
             android:value="touristland.db" />
@@ -38,6 +37,7 @@
         <meta-data
             android:name="DOMAIN_PACKAGE_NAME"
             android:value="ir.touristland" />
+
         <activity
             android:name=".Activities.SplashActivity"
             android:screenOrientation="portrait"
@@ -48,6 +48,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Activities.ActivityRaw">
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https" android:host="touristland.ir" android:path="/bazarche"/>
+                <data android:scheme="http" android:host="www.touristland.ir" android:path="/bazarche"/>
+                <data android:scheme="https" android:host="touristland.ir" android:path="/bazarche"/>
+                <data android:scheme="http" android:host="touristland.ir" android:path="/bazarche"/>
+            </intent-filter>
+        </activity>
+
         <activity
             android:name=".Activities.WelcomeActivity"
             android:screenOrientation="portrait"
@@ -92,13 +104,11 @@
             android:screenOrientation="portrait"
             android:theme="@style/MyMaterialTheme"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
-
         <activity
             android:name=".Activities.Hotels.HotelListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/MyMaterialTheme"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
-
         <activity
             android:name=".Activities.Hotels.PlacesActivity"
             android:screenOrientation="portrait"
@@ -189,11 +199,10 @@
             android:theme="@style/MyMaterialTheme"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
-            android:name=".Activities.Hotels.KishgardiCentersActivity"
+            android:name=".Activities.Kishgardi.KishgardiCentersActivity"
             android:screenOrientation="portrait"
             android:theme="@style/MyMaterialTheme"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
-
         <activity
             android:name=".Activities.Hotels.HotelsCentersActivity"
             android:screenOrientation="portrait"
@@ -204,22 +213,25 @@
             android:screenOrientation="portrait"
             android:theme="@style/MyMaterialTheme"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
-
-        <activity android:name=".Activities.TicketActivity"
+        <activity
+            android:name=".Activities.TicketActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme"
+            android:windowSoftInputMode="adjustResize|adjustPan" />
+        <activity
+            android:name=".Activities.Kishgardi.KishgardiCenterDetailsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/MyMaterialTheme"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
-
-        <activity android:name=".Activities.Kishgardi.KishgardiCenterDetailsActivity"
+        <activity
+            android:name=".Activities.Hotels.HotelDetailsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/MyMaterialTheme"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
-
-        <activity android:name=".Activities.Hotels.HotelDetailsActivity"
+        <activity android:name=".Activities.Hotels.HotelLocationActivity"
             android:screenOrientation="portrait"
             android:theme="@style/MyMaterialTheme"
-            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
-
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"></activity>
     </application>
 
 </manifest>

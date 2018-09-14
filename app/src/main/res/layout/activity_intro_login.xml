@@ -2,9 +2,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:card_view="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:layoutDirection="ltr">
+    android:layoutDirection="ltr"
+    android:orientation="vertical">
 
     <android.support.v7.widget.CardView
         android:id="@+id/toolbar_top"
@@ -68,171 +67,40 @@
                 />
 
     </ir.touristland.Constant.ArcLayout>-->
-
-    <LinearLayout
+    <FrameLayout
+        android:id="@+id/frame"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.75"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.45"
-            android:orientation="vertical">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.3">
-
-                <com.makeramen.roundedimageview.RoundedImageView
-                    style="@style/HomeFra_TextView"
-                    android:background="@android:color/transparent"
-                    android:scaleType="centerCrop"
-                    android:src="@mipmap/kish_services"
-                    app:riv_corner_radius="10dip" />
-
-                <TextView
-                    style="@style/HomeFra_TextView"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:text="خدمات گردشگری" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.35">
-
-                <com.makeramen.roundedimageview.RoundedImageView
-                    style="@style/HomeFra_TextView"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:background="@android:color/transparent"
-                    android:src="@mipmap/rent_car"
-                    app:riv_corner_radius="10dip" />
-
-                <TextView
-                    style="@style/HomeFra_TextView"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:text="رنت اتومبیل" />
-            </RelativeLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.55"
-            android:orientation="vertical">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.4">
-
-                <com.makeramen.roundedimageview.RoundedImageView
-                    android:id="@+id/btn_flight"
-                    style="@style/HomeFra_TextView"
-                    android:background="@android:color/transparent"
-                    android:src="@mipmap/flight_ticket"
-                    app:riv_corner_radius="10dip" />
-
-                <TextView
-                    style="@style/HomeFra_TextView"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:text="رزرو بلیط هواپیما" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.25">
-
-                <com.makeramen.roundedimageview.RoundedImageView
-                    android:id="@+id/btn_kishgardi"
-                    style="@style/HomeFra_TextView"
-                    android:background="@android:color/transparent"
-                    android:scaleType="centerCrop"
-                    android:src="@mipmap/kish_gardi"
-                    app:riv_corner_radius="10dip" />
-
-                <TextView
-                    style="@style/HomeFra_TextView"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:text="کیش گردی" />
-            </RelativeLayout>
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.25">
-
-        <com.makeramen.roundedimageview.RoundedImageView
-            android:id="@+id/btn_hotel"
-            style="@style/HomeFra_TextView"
-            android:background="@android:color/transparent"
-            android:scaleType="centerCrop"
-            android:src="@mipmap/hotel"
-            app:riv_corner_radius="10dip" />
-
-        <TextView
-            style="@style/HomeFra_TextView"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:text="رزرو هتل" />
-
-    </RelativeLayout>
+    </FrameLayout>
 
     <LinearLayout
         android:id="@+id/ll_bottom"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
         android:background="@drawable/bottom_navigation_background"
         android:gravity="center"
         android:orientation="horizontal">
 
-        <RelativeLayout
-            android:id="@+id/rl_after"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center">
-
-            <TextView
-                android:id="@+id/txt_support"
-                style="@style/txt_navigation_bottom"
-                android:text="درباره ما" />
-        </RelativeLayout>
-
-        <View
+        <TextView
+            android:id="@+id/txt_profile"
             style="@style/txt_navigation_bottom"
-            android:drawableTop="@mipmap/nav_search" />
+            android:text="پروفایل" />
 
-        <RelativeLayout
-            android:id="@+id/rl_before"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center">
+        <TextView
+            android:id="@+id/txt_support"
+            style="@style/txt_navigation_bottom"
+            android:text="درباره ما" />
 
-            <TextView
-                android:id="@+id/txt_news"
-                style="@style/txt_navigation_bottom"
-                android:text="اخبار و رویدادها" />
-        </RelativeLayout>
+        <TextView
+            android:id="@+id/txt_home"
+            style="@style/txt_navigation_bottom"
+            android:text="خانه" />
 
 
     </LinearLayout>
+
 </LinearLayout>

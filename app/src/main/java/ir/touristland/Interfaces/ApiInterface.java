@@ -22,6 +22,7 @@ import java.util.Map;
 import ir.touristland.Models.CenterItem;
 import ir.touristland.Models.CenterTypeItem;
 import ir.touristland.Models.FlightItem;
+import ir.touristland.Models.FlightReserve;
 import ir.touristland.Models.HotelDetails.HotelDetail;
 import ir.touristland.Models.HotelDetails.RoomsItem;
 import ir.touristland.Models.HotelList.HotelListResponse;
@@ -34,9 +35,14 @@ import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.Url;
 
 public interface ApiInterface {
+
+    @POST("/iid/v1/{token}/rel/topics/{topic}")
+    Call<ResponseBody> Subscribe(@Path("token") String token, @Path("topic") String topic);
+
     @FormUrlEncoded
     @POST("api/FlightReservationApi/SearchFlightData")
     Call<List<FlightItem>> getPosts(@FieldMap Map<String, String> data);
@@ -51,7 +57,11 @@ public interface ApiInterface {
 
     @FormUrlEncoded
     @POST("api/flights/ravisReserve")
-    Call<ResponseBody> ReserveFlight(@FieldMap Map<String, String> data);
+    Call<FlightReserve> ReserveFlight(@FieldMap Map<String, String> data);
+
+    @FormUrlEncoded
+    @POST("api/flights/ravisBook")
+    Call<FlightReserve> BookFlight(@FieldMap Map<String, String> data);
 
     @FormUrlEncoded
     @POST("api-v2/abd81N5286bja10a6Md1fb3y/json/hotelLoad")

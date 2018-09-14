@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:layoutDirection="ltr"
+    android:orientation="vertical"
     tools:context="ir.touristland.Activities.Flight.AddPassengerActivity">
 
     <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
@@ -47,8 +47,8 @@
             android:padding="8dp"
             android:text="اضافه کردن مسافر جدید"
             android:textColor="#339fc4"
-            android:textStyle="bold"
-            android:textSize="13sp" />
+            android:textSize="13sp"
+            android:textStyle="bold" />
 
     </android.support.v7.widget.CardView>
 

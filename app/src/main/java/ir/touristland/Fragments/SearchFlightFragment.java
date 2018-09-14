@@ -35,7 +35,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-
 import ir.touristland.Activities.Flight.FlightActivity;
 import ir.touristland.Adapters.CitiesAdapter;
 import ir.touristland.Application;

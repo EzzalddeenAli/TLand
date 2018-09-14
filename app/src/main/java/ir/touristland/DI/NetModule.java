@@ -60,6 +60,8 @@ public class NetModule {
             Request original = chain.request();
             Request.Builder requestBuilder = original.newBuilder()
                     .header("Content-Type", "application/json");
+             /*.header("Authorization",
+                    "key=AAAAOVKxB0Y:APA91bHOvHNrnkTbeLTcmfpOCQHUN9JweDex_hAjO1-D2n5EAOWEbChbknClIKnCArt8LFvJ70aUxC5Qovb861Dsh1GTttWA-GcVjW1MurP0REFznoceeJAoyqyaza6N1XvtgzmjFQvmGycuEYEqjtYpQ_3o75lmOg");*/
             //.header("Cache-Control", String.format("max-age=%d", BuildConfig.CACHETIME));
 
             Request request = requestBuilder.build();

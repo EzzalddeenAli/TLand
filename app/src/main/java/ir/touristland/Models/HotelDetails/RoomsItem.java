@@ -14,8 +14,8 @@ public class RoomsItem {
     @SerializedName("sofa")
     private String sofa;
 
-    @SerializedName("onlineReservation")
-    private boolean onlineReservation;
+    @SerializedName("reservationStatus")
+    private boolean reservationStatus;
 
     @SerializedName("fullBoard")
     private boolean fullBoard;
@@ -68,8 +68,12 @@ public class RoomsItem {
         return sofa;
     }
 
-    public boolean isOnlineReservation() {
-        return onlineReservation;
+    public boolean isReservationStatus() {
+        return reservationStatus;
+    }
+
+    public void setReservationStatus(boolean reservationStatus) {
+        this.reservationStatus = reservationStatus;
     }
 
     public boolean isFullBoard() {
@@ -118,6 +122,10 @@ public class RoomsItem {
 
     public String getBeds() {
         return beds;
+    }
+
+    public String getPrice() {
+        return price;
     }
 
     public void setPrice(String price) {

@@ -5,11 +5,15 @@ import android.databinding.DataBindingUtil;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.text.format.Formatter;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.gson.JsonObject;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
+
+import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -19,16 +23,15 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import ir.touristland.Activities.BaseActivity;
-import ir.touristland.Activities.Flight.PassengersListActivity;
 import ir.touristland.Application;
 import ir.touristland.Asynktask.AsynctaskReserveFlight;
 import ir.touristland.Classes.HSH;
 import ir.touristland.Interfaces.IWebservice;
 import ir.touristland.Models.FlightList.Response;
+import ir.touristland.Models.FlightReserve;
 import ir.touristland.Models.NumberPassenger;
 import ir.touristland.R;
 import ir.touristland.databinding.ActivityFlightDetailBinding;
-import okhttp3.ResponseBody;
 
 public class FlightDetailActivity extends BaseActivity {
 
@@ -47,61 +50,53 @@ public class FlightDetailActivity extends BaseActivity {
         fFeed.setToCity(NumberPassenger.getInstance().getParams().get(getString(R.string.PersianTo)));
         binding.setFlightItem(fFeed);
         //binding.txtDifference.setText(HSH.toPersianNumber(Calculate(fFeed.getFlightTime().substring(0, 5), fFeed.getArrivalTime().substring(0, 5))));
-        imageLoader.displayImage(getString(R.string.url2) + "/Files/Airlines/" + fFeed.getAirlineCode() + ".png?ver=1", ((ImageView) findViewById(R.id.img_logo)), options);
+        imageLoader.displayImage(getString(R.string.url2) + "Files/Airlines/" + fFeed.getAirlineCode() + ".png?ver=1", ((ImageView) findViewById(R.id.img_logo)), options);
         ((TextView) findViewById(R.id.txt_date)).setText(getIntent().getExtras().getString("Date"));
         findViewById(R.id.img_back).setOnClickListener(v -> finish());
 
         findViewById(R.id.btn_select_ticket).setOnClickListener(v ->
         {
-            WifiManager wm = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
-            String ip = Formatter.formatIpAddress(wm.getConnectionInfo().getIpAddress());
+            if(fFeed.getReservable() == 1) {
+                findViewById(R.id.pb).setVisibility(View.VISIBLE);
+                WifiManager wm = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
+                String ip = Formatter.formatIpAddress(wm.getConnectionInfo().getIpAddress());
 
-            Map<String, String> params = new HashMap<>();
-            params.put("ParvazId", "" + fFeed.getParvazId());
-            params.put("ClassId", "" + fFeed.getClassId());
-            params.put("ADL", "" + NumberPassenger.getInstance().getParams().get(getString(R.string.AdultCount)));
-            params.put("CHD", "" + NumberPassenger.getInstance().getParams().get(getString(R.string.ChildCount)));
-            params.put("INF", "" + NumberPassenger.getInstance().getParams().get(getString(R.string.InfantCount)));
-            params.put("KndSys", "" + fFeed.getKndSys());
-            params.put("CustomerId", getString(R.string.ApiSiteIDValue));
-            params.put("PassengerIP", ip);
-            IWebservice.FlightReserve delegate = new IWebservice.FlightReserve() {
-                @Override
-                public void getResult(String s) throws Exception {
-                    Intent intent = new Intent(FlightDetailActivity.this, PassengersListActivity.class);
-                    intent.putExtra("feedItem", fFeed);
-                    intent.putExtra("Date", getIntent().getExtras().getString("Date"));
-                    startActivity(intent);
-                }
+                Map<String, String> params = new HashMap<>();
+                params.put("ParvazId", "" + fFeed.getParvazId());
+                params.put("ClassId", "" + fFeed.getClassId());
+                params.put("ADL", "" + NumberPassenger.getInstance().getParams().get(getString(R.string.AdultCount)));
+                params.put("CHD", "" + NumberPassenger.getInstance().getParams().get(getString(R.string.ChildCount)));
+                params.put("INF", "" + NumberPassenger.getInstance().getParams().get(getString(R.string.InfantCount)));
+                params.put("KndSys", "" + fFeed.getKndSys());
+                params.put("CustomerId", getString(R.string.ApiSiteIDValue));
+                params.put("PassengerIP", ip);
+                IWebservice.IFlightReserve delegate = new IWebservice.IFlightReserve() {
+                    @Override
+                    public void getResult(FlightReserve item) throws Exception {
 
-                @Override
-                public void getError(String s) throws Exception {
-                    HSH.showtoast(FlightDetailActivity.this, s);
+                        findViewById(R.id.pb).setVisibility(View.GONE);
+                        Intent intent = new Intent(FlightDetailActivity.this, PassengersListActivity.class);
+                        intent.putExtra("feedItem", fFeed);
+                        intent.putExtra("Date", getIntent().getExtras().getString("Date"));
+                        startActivity(intent);
+                    }
 
-                }
-            };
-            new AsynctaskReserveFlight(FlightDetailActivity.this, params, delegate).getData();
-        });
-    }
-
-    private String Calculate(String t1, String t2) {
-        try {
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
-            Date startDate = simpleDateFormat.parse(t1);
-            Date endDate = simpleDateFormat.parse(t2);
-
-            long difference = endDate.getTime() - startDate.getTime();
-            if (difference < 0) {
-                Date dateMax = simpleDateFormat.parse("24:00");
-                Date dateMin = simpleDateFormat.parse("00:00");
-                difference = (dateMax.getTime() - startDate.getTime()) + (endDate.getTime() - dateMin.getTime());
+                    @Override
+                    public void getError(String s) throws Exception {
+                        HSH.showtoast(FlightDetailActivity.this, (new JSONObject(s)).getString("Message"));
+                        findViewById(R.id.pb).setVisibility(View.GONE);
+                    }
+                };
+                new AsynctaskReserveFlight(FlightDetailActivity.this, params, delegate).getData();
             }
-            int days = (int) (difference / (1000 * 60 * 60 * 24));
-            int hours = (int) ((difference - (1000 * 60 * 60 * 24 * days)) / (1000 * 60 * 60));
-            int min = (int) (difference - (1000 * 60 * 60 * 24 * days) - (1000 * 60 * 60 * hours)) / (1000 * 60);
-            return hours + " ساعت و " + min + " دقیقه";
-        } catch (Exception e) {
-            return "";
-        }
+            else
+            {
+                findViewById(R.id.pb).setVisibility(View.GONE);
+                Intent intent = new Intent(FlightDetailActivity.this, PassengersListActivity.class);
+                intent.putExtra("feedItem", fFeed);
+                intent.putExtra("Date", getIntent().getExtras().getString("Date"));
+                startActivity(intent);
+            }
+        });
     }
 }

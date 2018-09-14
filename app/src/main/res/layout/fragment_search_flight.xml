@@ -1,37 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout android:layout_width="match_parent"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:layoutDirection="ltr"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:orientation="vertical">
 
     <android.support.v7.widget.CardView
         android:id="@+id/ll_search"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
+            <Button
+                android:id="@+id/btn_search"
+                android:layout_width="wrap_content"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_above="@+id/imageView"
+                android:layout_centerHorizontal="true"
+                android:drawableRight="@mipmap/searchbar"
+                android:drawablePadding="@dimen/dp8"
+                android:paddingLeft="@dimen/dp32"
+                android:paddingRight="@dimen/dp32"
+                android:text="جستجو"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp16"
+                android:theme="@style/AppThemeButton" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom"
+                android:scaleType="fitXY"
+                app:srcCompat="@mipmap/bk" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:padding="@dimen/dp8"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
             <LinearLayout
-                android:id="@+id/linearLayout5"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/view2"
                 android:orientation="vertical"
-                android:padding="8dp"
                 android:weightSum="1">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:visibility="gone">
 
                     <RadioGroup
                         android:id="@+id/rg_systemic"
@@ -408,24 +436,6 @@
                     </LinearLayout>
 
                 </LinearLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <Button
-                        android:id="@+id/btn_search"
-                        android:layout_width="match_parent"
-                        android:layout_height="?attr/actionBarSize"
-                        android:drawableRight="@mipmap/searchbar"
-                        android:layout_alignParentBottom="true"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:theme="@style/AppThemeButton"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/sp16"
-                        android:text="جستجو" />
-                </RelativeLayout>
 
             </LinearLayout>
 

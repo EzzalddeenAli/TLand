@@ -77,7 +77,7 @@ public class Application extends SugarApp {
         );
         component = DaggerMainComponent.builder()
                 .imageLoaderMoudle(new ImageLoaderMoudle(this))
-                .netModule(new NetModule("https://eghamat24.com/"))
+                .netModule(new NetModule(getString(R.string.eghamatUrl)))
                 .appModule(new AppModule(this))
                 .build();
 

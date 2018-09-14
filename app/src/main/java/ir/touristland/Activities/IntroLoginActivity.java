@@ -1,64 +1,57 @@
 package ir.touristland.Activities;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import com.jaredrummler.android.widget.AnimatedSvgView;
-import com.makeramen.roundedimageview.RoundedImageView;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
-import ir.touristland.Activities.Kishgardi.KishgardiTypesActivity;
 import ir.touristland.Application;
 import ir.touristland.Classes.HSH;
 import ir.touristland.Classes.PermissionHandler;
+import ir.touristland.Fragments.MainFragment;
+import ir.touristland.Fragments.ProfileFragment;
 import ir.touristland.R;
 
 public class IntroLoginActivity extends BaseActivity implements View.OnClickListener {
 
-    String[] permissions = {Manifest.permission.ACCESS_FINE_LOCATION,
-            Manifest.permission.ACCESS_COARSE_LOCATION};
+    private MainFragment main_fragment = null;
+    private ProfileFragment profile_fragment = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro_login);
 
-        new PermissionHandler().checkPermission(IntroLoginActivity.this, permissions, new PermissionHandler.OnPermissionResponse() {
-            @Override
-            public void onPermissionGranted() {
-            }
-
-            @Override
-            public void onPermissionDenied() {
-                HSH.showtoast(IntroLoginActivity.this, "برای ورود به اپلیکیشن دسترسی ها را صادر نمایید.");
-            }
-        });
+        main_fragment = new MainFragment();
+        openFragment(IntroLoginActivity.this, main_fragment);
 
         if (!Application.preferences.getString("IsFirstRun", "").equals("true")) {
             startActivity(new Intent(IntroLoginActivity.this, WelcomeActivity.class));
             finish();
         } else {
             HSH.vectorTop(IntroLoginActivity.this, findViewById(R.id.txt_support), R.drawable.ic_support2);
-            HSH.vectorTop(IntroLoginActivity.this, findViewById(R.id.txt_news), R.drawable.ic_rss);
+            HSH.vectorTop(IntroLoginActivity.this, findViewById(R.id.txt_home), R.drawable.ic_home);
+            HSH.vectorTop(IntroLoginActivity.this, findViewById(R.id.txt_profile), R.drawable.ic_profile2);
             AnimatedSvgView svgView = findViewById(R.id.font_svg_view);
             svgView.start();
-            RoundedImageView btnFlight = findViewById(R.id.btn_flight);
-            RoundedImageView btnKishgardi = findViewById(R.id.btn_kishgardi);
-            RoundedImageView btnHotel = findViewById(R.id.btn_hotel);
-            btnFlight.setOnClickListener(this);
-            btnKishgardi.setOnClickListener(this);
-            btnHotel.setOnClickListener(this);
 
+            TextView txtHome = findViewById(R.id.txt_home);
+            txtHome.setOnClickListener(this);
             TextView txtSupport = findViewById(R.id.txt_support);
             txtSupport.setOnClickListener(this);
+            TextView txtProfile = findViewById(R.id.txt_profile);
+            txtProfile.setOnClickListener(this);
         }
     }
 
@@ -68,30 +61,14 @@ public class IntroLoginActivity extends BaseActivity implements View.OnClickList
 
         if (v.getId() == R.id.txt_support)
             HSH.onOpenPage(IntroLoginActivity.this, AboutUsActivity.class);
-        else {
-            Animation animation = AnimationUtils.loadAnimation(IntroLoginActivity.this,
-                    R.anim.zoom_out);
-            v.startAnimation(animation);
-            new Handler().postDelayed(
-                    new Runnable() {
-                        @Override
-                        public void run() {
-                            switch (v.getId()) {
-                                case R.id.btn_flight:
-                                    HSH.onOpenPage(IntroLoginActivity.this, TicketActivity.class);
-                                    break;
-                                case R.id.btn_kishgardi:
-                                    HSH.onOpenPage(IntroLoginActivity.this, KishgardiTypesActivity.class);
-                                    break;
-                                case R.id.btn_hotel:
-                                    Intent i = new Intent(IntroLoginActivity.this, TicketActivity.class);
-                                    i.putExtra("IsHotel", "Hotel");
-                                    startActivity(i);
-                                    break;
-                            }
-                        }
-                    }, 250);
+        else if (v.getId() == R.id.txt_home)
+            openFragment(IntroLoginActivity.this, main_fragment);
+        else if (v.getId() == R.id.txt_profile) {
+            if (profile_fragment == null)
+                profile_fragment = new ProfileFragment();
+            openFragment(IntroLoginActivity.this, profile_fragment);
         }
+
     }
 
 
@@ -136,6 +113,26 @@ public class IntroLoginActivity extends BaseActivity implements View.OnClickList
         });
         HSH.dialog(dialog);
         //dialog.show();
+    }
+
+    private void openFragment(Activity activity, Fragment fragment) {
+        String fragmentTag = fragment.getClass().getSimpleName();
+        FragmentManager fragmentManager = ((AppCompatActivity) activity)
+                .getSupportFragmentManager();
+
+        boolean fragmentPopped = fragmentManager
+                .popBackStackImmediate(fragmentTag, 0);
+
+        FragmentTransaction ftx = fragmentManager.beginTransaction();
+
+        if ((!fragmentPopped && fragmentManager.findFragmentByTag(fragmentTag) == null) || fragmentTag.contains("Search"))
+            ftx.addToBackStack(fragment.getClass().getSimpleName());
+
+        ftx.setCustomAnimations(R.anim.slide_in_right,
+                R.anim.slide_out_left, R.anim.slide_in_left,
+                R.anim.slide_out_right);
+        ftx.replace(R.id.frame, fragment, fragmentTag);
+        ftx.commit();
     }
 
 }

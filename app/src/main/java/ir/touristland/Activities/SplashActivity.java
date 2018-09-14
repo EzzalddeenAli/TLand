@@ -55,7 +55,6 @@ public class SplashActivity extends Activity {
         }, 3000);
     }
 
-
     private void GetCities() {
         Call<HotelCities> call =
                 retrofit.create(ApiInterface.class).loadCity();
@@ -68,9 +67,6 @@ public class SplashActivity extends Activity {
                         HotelCitiesDAO dao = new HotelCitiesDAO();
                         dao.update(result.getResult());
                     } catch (Exception e) {
-                        HSH.showtoast(SplashActivity.this, e.getMessage());
-                        HSH.showtoast(SplashActivity.this, e.getMessage());
-                        HSH.showtoast(SplashActivity.this, e.getMessage());
                     }
                 else
                     GetCities();

@@ -28,8 +28,8 @@ public class ResultItem {
     @SerializedName("reservationStatus")
     private boolean reservationStatus;
 
-    @SerializedName("priceList")
-    private Object priceList;
+   /* @SerializedName("priceList")
+    private Object priceList;*/
 
     public TotalPrice getTotalPrice() {
         return totalPrice;
@@ -95,27 +95,11 @@ public class ResultItem {
         this.reservationStatus = reservationStatus;
     }
 
-    public Object getPriceList() {
+    /*public Object getPriceList() {
         return priceList;
     }
 
     public void setPriceList(Object priceList) {
         this.priceList = priceList;
-    }
-
-    @Override
-    public String toString() {
-        return
-                "ResultItem{" +
-                        "totalPrice = '" + totalPrice + '\'' +
-                        ",onlineReservation = '" + onlineReservation + '\'' +
-                        ",fullBoard = '" + fullBoard + '\'' +
-                        ",nameFa = '" + nameFa + '\'' +
-                        ",discount = '" + discount + '\'' +
-                        ",id = '" + id + '\'' +
-                        ",beds = '" + beds + '\'' +
-                        ",reservationStatus = '" + reservationStatus + '\'' +
-                        ",priceList = '" + priceList + '\'' +
-                        "}";
-    }
+    }*/
 }

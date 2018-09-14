@@ -12,9 +12,9 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:background="@drawable/post_details_border2"
+        android:drawablePadding="@dimen/dp8"
         android:gravity="right"
         android:inputType="textMultiLine"
-        android:drawablePadding="@dimen/dp8"
         android:padding="6dp"
         android:textColor="@android:color/black"
         android:textSize="@dimen/sp13" />

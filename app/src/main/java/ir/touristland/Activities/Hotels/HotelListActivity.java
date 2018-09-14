@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -66,7 +65,7 @@ public class HotelListActivity extends BaseActivity implements View.OnClickListe
     private SwipeRefreshLayout swipeContainer;
     private ProgressWheel pb;
     private HotelAdapter adapter;
-    private LinearLayoutManager layoutManager;
+    //private LinearLayoutManager layoutManager;
 
     public void DeclareElements() {
         fb = findViewById(R.id.fb);
@@ -76,7 +75,7 @@ public class HotelListActivity extends BaseActivity implements View.OnClickListe
         pb = findViewById(R.id.pb);
         rv = findViewById(R.id.rv_hotel);
         rv.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(HotelListActivity.this);
+        //layoutManager = new LinearLayoutManager(HotelListActivity.this);
         //rv.setLayoutManager(layoutManager);
         rv.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         adapter = new HotelAdapter(HotelListActivity.this, feedItemList);
@@ -104,7 +103,7 @@ public class HotelListActivity extends BaseActivity implements View.OnClickListe
         Application.getComponent().Inject(this);
         DeclareElements();
         UpdateChecker();
-        params = NumberPassenger.getInstance().getParams();
+        params.put(getString(R.string.city), NumberPassenger.getInstance().getParams().get(getString(R.string.city)));
         txtBefore = findViewById(R.id.txt_before);
         txtAfter = findViewById(R.id.txt_after);
         txtSort = findViewById(R.id.txt_sort);
@@ -128,10 +127,8 @@ public class HotelListActivity extends BaseActivity implements View.OnClickListe
                 android.R.color.holo_green_light,
                 android.R.color.holo_orange_light,
                 android.R.color.holo_red_light);
-        ((TextView) findViewById(R.id.toolbar_title)).setText(HSH.toPersianNumber(params.get(getString(R.string.PersianFrom))));
-        ((TextView) findViewById(R.id.txt_date)).setText(HSH.toPersianNumber(params.get(getString(R.string.PersianDate))));
-        params.remove(getString(R.string.PersianFrom));
-        params.remove(getString(R.string.PersianDate));
+        ((TextView) findViewById(R.id.toolbar_title)).setText(HSH.toPersianNumber(NumberPassenger.getInstance().getParams().get(getString(R.string.PersianFrom))));
+        ((TextView) findViewById(R.id.txt_date)).setText(HSH.toPersianNumber(NumberPassenger.getInstance().getParams().get(getString(R.string.PersianDate))));
         findViewById(R.id.img_back).setOnClickListener(v -> finish());
 
         SearchHotel();
@@ -149,8 +146,6 @@ public class HotelListActivity extends BaseActivity implements View.OnClickListe
                         try {
                             swipeContainer.setRefreshing(false);
                             feedItemList.addAll(response.body().getResult());
-                           /* for (ResultItem m : response.body().getResult())
-                                adapter.addIItem(m);*/
 
                             Collections.sort(feedItemList, new FlightLowestPriceComparator());
                             adapter.notifyDataSetChanged();

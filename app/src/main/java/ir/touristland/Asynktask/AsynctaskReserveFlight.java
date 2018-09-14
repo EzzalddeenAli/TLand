@@ -11,6 +11,7 @@ import ir.touristland.Application;
 import ir.touristland.Classes.NetworkUtils;
 import ir.touristland.Interfaces.ApiInterface;
 import ir.touristland.Interfaces.IWebservice;
+import ir.touristland.Models.FlightReserve;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -18,15 +19,15 @@ import retrofit2.Retrofit;
 
 public class AsynctaskReserveFlight {
 
-    IWebservice.FlightReserve delegate;
+    IWebservice.IFlightReserve delegate;
     @Inject
     Retrofit retrofit;
     private Activity ac;
-    private Map<String, String> params ;
+    private Map<String, String> params;
 
     public AsynctaskReserveFlight(Activity ac,
                                   Map<String, String> params,
-                                  IWebservice.FlightReserve delegate) {
+                                  IWebservice.IFlightReserve delegate) {
         this.ac = ac;
         this.params = params;
         this.delegate = delegate;
@@ -34,14 +35,14 @@ public class AsynctaskReserveFlight {
     }
 
     public void getData() {
-        Call<ResponseBody>
+        Call<FlightReserve>
                 call = retrofit.create(ApiInterface.class).ReserveFlight(params);
-        call.enqueue(new Callback<ResponseBody>() {
+        call.enqueue(new Callback<FlightReserve>() {
             @Override
-            public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
+            public void onResponse(Call<FlightReserve> call, retrofit2.Response<FlightReserve> response) {
                 try {
                     if (response.code() == 200) {
-                        delegate.getResult(response.body().string());
+                        delegate.getResult(response.body());
                     } else
                         delegate.getError(response.errorBody().string());
                 } catch (Exception e) {
@@ -49,7 +50,7 @@ public class AsynctaskReserveFlight {
             }
 
             @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
+            public void onFailure(Call<FlightReserve> call, Throwable t) {
                 if (NetworkUtils.getConnectivity(ac) != false)
                     getData();
                 else {

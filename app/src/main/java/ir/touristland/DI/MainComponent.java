@@ -13,11 +13,14 @@ import ir.touristland.Activities.SplashActivity;
 import ir.touristland.Adapters.FlightAdapter;
 import ir.touristland.Adapters.HotelAdapter;
 import ir.touristland.Adapters.RoomsAdapter;
+import ir.touristland.Asynktask.AsynctaskBookFlight;
 import ir.touristland.Asynktask.AsynctaskGetHotelList;
 import ir.touristland.Asynktask.AsynctaskGetPost;
 import ir.touristland.Asynktask.AsynctaskHotelsTypes;
 import ir.touristland.Asynktask.AsynctaskReserveFlight;
+import ir.touristland.Fragments.ProfileFragment;
 import ir.touristland.Fragments.SlideShowFragment;
+import ir.touristland.Fragments.ViewPagerFragment;
 import ir.touristland.SliderTypes.BaseSliderView;
 
 /**
@@ -60,4 +63,9 @@ public interface MainComponent {
 
     void Inject(AsynctaskReserveFlight mainActivity);
 
+    void Inject(ProfileFragment mainActivity);
+
+    void Inject(ViewPagerFragment mainActivity);
+
+    void Inject(AsynctaskBookFlight mainActivity);
 }

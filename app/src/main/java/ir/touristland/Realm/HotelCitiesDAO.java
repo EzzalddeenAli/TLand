@@ -16,25 +16,6 @@ public class HotelCitiesDAO implements Serializable {
         /*realm = Realm.getDefaultInstance();*/
     }
 
-    /*public void save(final Hotelcity cities) {
-        realm.executeTransactionAsync(new Realm.Transaction() {
-            @Override
-            public void execute(Realm realm) {
-                realm.createObject(Hotelcity.class, cities.getName());
-            }
-        }, new Realm.Transaction.OnSuccess() {
-            @Override
-            public void onSuccess() {
-
-            }
-        }, new Realm.Transaction.OnError() {
-            @Override
-            public void onError(Throwable error) {
-
-            }
-        });
-    }*/
-
     public List<Hotelcity> findAll() {
         List<Hotelcity> cities = Select.from(Hotelcity.class).orderBy("namefa").list();
         return cities;

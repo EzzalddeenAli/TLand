@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.List;
@@ -28,6 +29,8 @@ public class RoomsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     @Inject
     ImageLoader imageLoader;
+    @Inject
+    DisplayImageOptions options;
     private List<RoomsItem> feedItemList;
     private RoomInterface inteface;
     private Context mContext;
@@ -60,7 +63,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             Holder.txtService.setText("خدمات پذیرایی:" + "\n" + (feedItemList.get(i).isFullBoard() ? "صبحانه، ناهار، شام دارد" : "صبحانه دارد|ناهار، شام ندارد"));
             ((RoomHolder) holder).txtBeds.setText("ظرفیت :" + "\n" + HSH.toPersianNumber("" + feedItemList.get(i).getBeds()) + " نفر");
             ((RoomHolder) holder).txtExtraPerson.setText("نفر اضافه:" + "\n" + HSH.toPersianNumber("" + feedItemList.get(i).getExtraPersons()) + " نفر");
-            ((RoomHolder) holder).txtPrice.setText(HSH.toPersianNumber(HSH.Parse("" + feedItemList.get(i).getBeds())));
+            ((RoomHolder) holder).txtPrice.setText(true == feedItemList.get(i).isReservationStatus() ? HSH.toPersianNumber(HSH.Parse("" + feedItemList.get(i).getPrice())) + " تومان" : (false == feedItemList.get(i).isReservationStatus() ? " درخواست رزرو در لیست انتظار" : ""));
             HSH.vectorRight(mContext, Holder.txtService, R.drawable.ic_room_service);
             HSH.vectorRight(mContext, Holder.txtExtraPerson, R.drawable.ic_add_user);
             HSH.vectorRight(mContext, Holder.txtBeds, R.drawable.ic_add_user2);
@@ -84,7 +87,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
             //Holder.lbl_state.setVisibility(View.VISIBLE);
             //imageLoader.displayImage(feedItemList.get(i).getImage(), feedListRowHolder.img);
-            imageLoader.displayImage(mContext.getString(R.string.image) + feedItemList.get(i).getImage(), Holder.imgRoom);
+            imageLoader.displayImage(mContext.getString(R.string.image) + feedItemList.get(i).getImage(), Holder.imgRoom, options);
             Holder.btnIncrease.setOnClickListener(v ->
             {
                 try {

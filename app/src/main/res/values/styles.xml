@@ -26,7 +26,7 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
-        <item name="android:background">@drawable/item_devider_vertical</item>
+        <item name="android:background">#fbfbfb</item>
     </style>
 
     /////////////////////////////////////////////////////////////////////
@@ -304,6 +304,7 @@
         <item name="android:background">@drawable/rounded_corners_bottom</item>
         <item name="android:gravity">center</item>
         <item name="android:padding">5dp</item>
+        <item name="android:tag">SlideDown</item>
         <item name="android:scaleType">centerCrop</item>
         <item name="android:layout_alignParentBottom">true</item>
     </style>
@@ -322,8 +323,8 @@
     </style>
 
     <style name="RatingBarfeed" parent="android:style/Widget.Material.RatingBar.Small">
-        <item name="colorControlNormal">#888888</item>
-        <item name="colorControlHighlight">#888888</item>
+        <item name="colorControlNormal">#ffffff</item>
+        <item name="colorControlHighlight">#ffffff</item>
         <item name="colorControlActivated">@color/google_red</item>
     </style>
 </resources>
