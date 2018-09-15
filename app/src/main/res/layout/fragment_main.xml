@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ll_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.75"
+        android:orientation="horizontal">
+
+        <ir.touristland.Constant.AnimatedLinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.45"
+            android:orientation="vertical"
+            android:id="@+id/ll_main2">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.3"
+                android:tag="SlideDown">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    style="@style/HomeFra_TextView"
+                    android:background="@drawable/rounded_corners_elevation"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/kish_services"
+                    app:riv_corner_radius="10dip" />
+
+                <TextView
+                    style="@style/HomeFra_TextView"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="خدمات گردشگری" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.35"
+                android:tag="SlideDown">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    style="@style/HomeFra_TextView"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:background="@android:color/transparent"
+                    android:src="@mipmap/rent_car"
+                    app:riv_corner_radius="10dip" />
+
+                <TextView
+                    style="@style/HomeFra_TextView"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="رنت اتومبیل" />
+            </RelativeLayout>
+
+        </ir.touristland.Constant.AnimatedLinearLayout>
+
+        <ir.touristland.Constant.AnimatedLinearLayout
+            android:id="@+id/ll_main3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.55"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:tag="SlideDown"
+                android:layout_weight="0.4">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/btn_flight"
+                    style="@style/HomeFra_TextView"
+                    android:background="@android:color/transparent"
+                    android:src="@mipmap/flight_ticket"
+                    app:riv_corner_radius="10dip" />
+
+                <TextView
+                    style="@style/HomeFra_TextView"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="رزرو بلیط هواپیما" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.25"
+                android:tag="SlideDown">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/btn_kishgardi"
+                    style="@style/HomeFra_TextView"
+                    android:background="@android:color/transparent"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/kish_gardi"
+                    app:riv_corner_radius="10dip" />
+
+                <TextView
+                    style="@style/HomeFra_TextView"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="کیش گردی" />
+            </RelativeLayout>
+
+        </ir.touristland.Constant.AnimatedLinearLayout>
+
+    </LinearLayout>
+
+    <ir.touristland.Constant.AnimatedLinearLayout
+        android:id="@+id/ll_main4"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.25">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/btn_hotel"
+            style="@style/HomeFra_TextView"
+            android:background="@android:color/transparent"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/hotel"
+            android:tag="SlideDown"
+            app:riv_corner_radius="10dip" />
+
+        <TextView
+            style="@style/HomeFra_TextView"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:tag="SlideDown"
+            android:text="رزرو هتل" />
+
+    </ir.touristland.Constant.AnimatedLinearLayout>
+
+</LinearLayout>

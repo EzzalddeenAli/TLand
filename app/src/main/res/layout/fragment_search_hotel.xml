@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layoutDirection="ltr"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/ll_search"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/btn_search"
+                android:layout_width="wrap_content"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_above="@+id/imageView"
+                android:layout_centerHorizontal="true"
+                android:drawableRight="@mipmap/searchbar"
+                android:drawablePadding="@dimen/dp8"
+                android:paddingLeft="@dimen/dp32"
+                android:paddingRight="@dimen/dp32"
+                android:text="جستجو"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp16"
+                android:theme="@style/AppThemeButton" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom"
+                android:scaleType="fitXY"
+                app:srcCompat="@mipmap/hotel_bk" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/linearLayout5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/view2"
+                android:orientation="vertical"
+                android:padding="8dp"
+                android:weightSum="1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="7"
+                        android:background="@drawable/style_edittext"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:id="@+id/mic"
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_margin="3dp"
+                            android:src="@mipmap/microphone" />
+
+                        <EditText
+                            android:id="@+id/et_from"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@+id/mic"
+                            android:layout_toRightOf="@+id/mic"
+                            android:background="@drawable/style_login_transparent"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:gravity="center"
+                            android:hint="به کدام شهر می خواهید سفر کنید ؟"
+                            android:tag=""
+                            android:textSize="@dimen/sp14" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:background="@drawable/style_textview"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/lbl_from"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawablePadding="16dp"
+                            android:gravity="center"
+                            android:text="مقصد"
+                            android:textColor="#fff"
+                            android:textSize="@dimen/sp14" />
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/et_departure"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="7"
+                        android:background="@drawable/style_edittext"
+                        android:contentDescription=""
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:gravity="center"
+                        android:hint="هر وقت میخای بری"
+                        android:tag=""
+                        android:textSize="@dimen/sp14" />
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:background="@drawable/style_textview"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/lbl_departure"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawablePadding="6dp"
+                            android:gravity="center"
+                            android:text="تاریخ شروع سفر"
+                            android:textColor="#fff"
+                            android:textSize="@dimen/sp14" />
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linear_return"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:layout_marginTop="@dimen/dp8"
+                    android:orientation="horizontal">
+
+                    <Spinner
+                        android:id="@+id/sp_staying_time"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="7"
+                        android:background="@drawable/style_edittext"
+                        android:contentDescription=""
+                        android:entries="@array/stayingtime"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:gravity="center"
+                        android:tag=""
+                        android:textSize="@dimen/sp14" />
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:background="@drawable/style_textview"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/lbl_return"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawablePadding="6dp"
+                            android:gravity="center"
+                            android:text="به مدت"
+                            android:textColor="#fff"
+                            android:textSize="@dimen/sp14" />
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</android.support.constraint.ConstraintLayout>

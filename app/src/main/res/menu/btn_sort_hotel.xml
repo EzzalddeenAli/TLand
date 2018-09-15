@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_gravity="start"
+    android:fitsSystemWindows="true"
+    android:gravity="start"
+    android:layoutDirection="ltr"
+    tools:context=".MainActivity">
+    <item
+        android:id="@+id/two"
+        android:title="کمترین قیمت"
+        android:titleCondensed="lowestprice" />
+
+    <item
+        android:id="@+id/three"
+        android:title="بیشترین قیمت"
+        android:titleCondensed="Highestprice" />
+
+</menu>

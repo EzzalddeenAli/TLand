@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:gravity="right"
+    android:layoutDirection="ltr"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="16dp"
+                android:background="#ededed" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:layout_above="@+id/txt_name"
+                android:layout_alignEnd="@+id/txt_name"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignRight="@+id/txt_name">
+
+                <ir.touristland.Moudle.CircleImageView
+                    android:id="@+id/img_profile"
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_gravity="right|center_vertical"
+                    android:layout_marginRight="20dp"
+                    android:transitionName="trans" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/img_profile"
+                    android:layout_toStartOf="@+id/img_profile"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txt_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:background="@android:color/transparent"
+                        android:gravity="right|bottom"
+                        android:paddingRight="16dp"
+                        android:paddingTop="5dp"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/sp16" />
+
+                    <TextView
+                        android:id="@+id/txt_pic"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:background="@android:color/transparent"
+                        android:gravity="right|bottom"
+                        android:paddingRight="16dp"
+                        android:paddingTop="5dp"
+                        android:text="تغییر عکس پروفایل"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/sp15" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="16dp"
+                android:background="#ededed" />
+
+            <TextView
+                android:id="@+id/txt_shopping_basket"
+                style="@style/ProfileItem"
+                android:text="خریدهای من" />
+
+            <TextView
+                android:id="@+id/txt_passengers"
+                style="@style/ProfileItem"
+                android:text="لیست مسافران" />
+
+            <TextView
+                android:id="@+id/txt_credit"
+                style="@style/ProfileItem"
+                android:text="شارژ اعتبار" />
+
+            <TextView
+                android:id="@+id/txt_financial"
+                style="@style/ProfileItem"
+                android:text="مدیریت مالی" />
+
+            <TextView
+                android:id="@+id/txt_refund"
+                style="@style/ProfileItem"
+                android:text="استرداد بلیط" />
+
+            <TextView
+                android:id="@+id/txt_rulls"
+                style="@style/ProfileItem"
+                android:text="قوانین و مقررات" />
+
+            <TextView
+                android:id="@+id/txt_support"
+                style="@style/ProfileItem"
+                android:text="تماس با ما" />
+
+            <TextView
+                android:id="@+id/txt_share"
+                style="@style/ProfileItem"
+                android:text="معرفی به دوستان" />
+
+            <TextView
+                android:id="@+id/txt_exit"
+                style="@style/ProfileItem"
+                android:text="خروج از حساب کاربری" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>
