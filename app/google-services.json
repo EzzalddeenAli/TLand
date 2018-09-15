@@ -1,0 +1,86 @@
+{
+  "project_info": {
+    "project_number": "460182270490",
+    "firebase_url": "https://myprojects-2702b.firebaseio.com",
+    "project_id": "myprojects-2702b",
+    "storage_bucket": "myprojects-2702b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:460182270490:android:3c37b60b3070b453",
+        "android_client_info": {
+          "package_name": "ir.touristland"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "460182270490-6bppepidn3l0ucflhkkqa8mkrrfh9jdj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyClGHA5oSe4kDCS7RNQzZAA_ewo-VDMULI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:460182270490:android:82350eb849b2c356",
+        "android_client_info": {
+          "package_name": "ir.payebash"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "460182270490-dl1t0dm8dd236aveqpstui8p99k0nt68.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ir.payebash",
+            "certificate_hash": "ff182acb234b70e6306e5dc5fb434850365e80d5"
+          }
+        },
+        {
+          "client_id": "460182270490-6bppepidn3l0ucflhkkqa8mkrrfh9jdj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyClGHA5oSe4kDCS7RNQzZAA_ewo-VDMULI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "460182270490-6bppepidn3l0ucflhkkqa8mkrrfh9jdj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
