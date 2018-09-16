@@ -27,7 +27,7 @@ public class PassengersListActivity extends BaseActivity implements View.OnClick
     private void DeclareElements() {
         findViewById(R.id.img_back).setOnClickListener(this);
         etMobile = findViewById(R.id.et_mobile);
-        //etEmail = findViewById(R.id.et_email);
+        etEmail = findViewById(R.id.et_email);
         btnSelectTicket = findViewById(R.id.btn_select_ticket);
         btnSelectTicket.setOnClickListener(this);
         etMobile.setText(HSH.toPersianNumber(Application.preferences.getString("Mobile", "")));
@@ -37,7 +37,7 @@ public class PassengersListActivity extends BaseActivity implements View.OnClick
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_passengers_list);
+        setContentView(R.layout.activity_passengers_list_hotel);
 
         DeclareElements();
 

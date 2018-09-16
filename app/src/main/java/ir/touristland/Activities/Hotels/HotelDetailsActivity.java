@@ -115,7 +115,7 @@ public class HotelDetailsActivity extends BaseActivity {
                                 tabHost.post(new Runnable() {
                                     @Override
                                     public void run() {
-                                        tab.getCustomView().setBackgroundColor(Color.parseColor("#ededed"));
+                                        //tab.getCustomView().setBackgroundColor(Color.parseColor("#ededed"));
                                     }
                                 });
                             }
