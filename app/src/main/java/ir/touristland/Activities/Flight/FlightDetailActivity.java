@@ -25,6 +25,7 @@ import javax.inject.Inject;
 import ir.touristland.Activities.BaseActivity;
 import ir.touristland.Application;
 import ir.touristland.Asynktask.AsynctaskReserveFlight;
+import ir.touristland.Asynktask.AsynctaskReserveTLflight;
 import ir.touristland.Classes.HSH;
 import ir.touristland.Interfaces.IWebservice;
 import ir.touristland.Models.FlightList.Response;
@@ -32,6 +33,7 @@ import ir.touristland.Models.FlightReserve;
 import ir.touristland.Models.NumberPassenger;
 import ir.touristland.R;
 import ir.touristland.databinding.ActivityFlightDetailBinding;
+import okhttp3.ResponseBody;
 
 public class FlightDetailActivity extends BaseActivity {
 
@@ -62,6 +64,14 @@ public class FlightDetailActivity extends BaseActivity {
                 String ip = Formatter.formatIpAddress(wm.getConnectionInfo().getIpAddress());
 
                 Map<String, String> params = new HashMap<>();
+                params.put("DatePersianFly", NumberPassenger.Companion.getInstance().getParams().get(getString(R.string.PersianDate)));
+                params.put("FromCityNameFly", fFeed.getFromCity());
+                params.put("FromCityCode", NumberPassenger.Companion.getInstance().getParams().get(getString(R.string.From)));
+                params.put("ToCityNameFly", NumberPassenger.Companion.getInstance().getParams().get(getString(R.string.To)));
+                params.put("ToCityCode", "1");
+                params.put("AirLineCode", fFeed.getAirlineCode());
+                params.put("AirLineTitle", fFeed.getAirlineName());
+
                 params.put("ParvazId", "" + fFeed.getParvazId());
                 params.put("ClassId", "" + fFeed.getClassId());
                 params.put("ADL", "" + NumberPassenger.Companion.getInstance().getParams().get(getString(R.string.AdultCount)));
@@ -70,16 +80,31 @@ public class FlightDetailActivity extends BaseActivity {
                 params.put("KndSys", "" + fFeed.getKndSys());
                 params.put("CustomerId", getString(R.string.ApiSiteIDValue));
                 params.put("PassengerIP", ip);
-                IWebservice.IFlightReserve delegate = new IWebservice.IFlightReserve() {
-                    @Override
-                    public void getResult(FlightReserve item) throws Exception {
-                        NumberPassenger.Companion.getInstance().setReqNo(item.getReqNo());
+                params.put("Status", "1");
 
-                        findViewById(R.id.pb).setVisibility(View.GONE);
-                        Intent intent = new Intent(FlightDetailActivity.this, PassengersListActivity.class);
-                        intent.putExtra("feedItem", fFeed);
-                        intent.putExtra("Date", getIntent().getExtras().getString("Date"));
-                        startActivity(intent);
+                IWebservice.ITLFlightReserve  delegate = new IWebservice.ITLFlightReserve() {
+                    @Override
+                    public void getResult(ResponseBody item) throws Exception {
+
+                        IWebservice.IFlightReserve delegate = new IWebservice.IFlightReserve() {
+                            @Override
+                            public void getResult(FlightReserve item) throws Exception {
+                                NumberPassenger.Companion.getInstance().setReqNo(item.getReqNo());
+
+                                findViewById(R.id.pb).setVisibility(View.GONE);
+                                Intent intent = new Intent(FlightDetailActivity.this, PassengersListActivity.class);
+                                intent.putExtra("feedItem", fFeed);
+                                intent.putExtra("Date", getIntent().getExtras().getString("Date"));
+                                startActivity(intent);
+                            }
+
+                            @Override
+                            public void getError(String s) throws Exception {
+                                HSH.showtoast(FlightDetailActivity.this, (new JSONObject(s)).getString("Message"));
+                                findViewById(R.id.pb).setVisibility(View.GONE);
+                            }
+                        };
+                        new AsynctaskReserveFlight(FlightDetailActivity.this, params, delegate).getData();
                     }
 
                     @Override
@@ -88,7 +113,7 @@ public class FlightDetailActivity extends BaseActivity {
                         findViewById(R.id.pb).setVisibility(View.GONE);
                     }
                 };
-                new AsynctaskReserveFlight(FlightDetailActivity.this, params, delegate).getData();
+                new AsynctaskReserveTLflight(FlightDetailActivity.this, params, delegate).getData();
             }
             else
             {
