@@ -44,7 +44,7 @@ public class PassengersListActivity extends BaseActivity implements View.OnClick
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = null;
         LinearLayout linearAdult = findViewById(R.id.linearAdult);
-        for (int i = 1; i <= NumberPassenger.getInstance().getNumberAdult(); i++) {
+        for (int i = 1; i <= NumberPassenger.Companion.getInstance().getNumberAdult(); i++) {
             view = inflater.inflate(R.layout.item_passenger, null);
             TextView v = view.findViewById(R.id.text);
             v.setId(i);
@@ -54,9 +54,9 @@ public class PassengersListActivity extends BaseActivity implements View.OnClick
             HSH.vectorRight(PassengersListActivity.this, v, R.drawable.ic_man);
             linearAdult.addView(view);
         }
-        if (NumberPassenger.getInstance().getNumberChild() == 0)
+        if (NumberPassenger.Companion.getInstance().getNumberChild() == 0)
             findViewById(R.id.txt_child).setVisibility(View.GONE);
-        if (NumberPassenger.getInstance().getNumberBaby() == 0)
+        if (NumberPassenger.Companion.getInstance().getNumberBaby() == 0)
             findViewById(R.id.txt_baby).setVisibility(View.GONE);
     }
 
@@ -80,7 +80,7 @@ public class PassengersListActivity extends BaseActivity implements View.OnClick
                     Application.editor.commit();
                     String StringData = "[";
                     String passengersIds = "";
-                    numberPassenger = NumberPassenger.getInstance().getNumberAdult();
+                    numberPassenger = NumberPassenger.Companion.getInstance().getNumberAdult();
                     for (int i = 1; i <= numberPassenger; i++) {
                         if (null == findViewById(i).getContentDescription()) {
                             HSH.showtoast(PassengersListActivity.this, "لطفا مسافر شماره " + String.valueOf(i) + " را انتخاب کنید");

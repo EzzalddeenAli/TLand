@@ -135,10 +135,10 @@ public class SearchTrainFragment extends Fragment implements View.OnClickListene
             params.put(getString(R.string.InfantCount), String.valueOf(((Spinner) rootView.findViewById(R.id.spBaby)).getSelectedItemPosition()));
             params.put(getString(R.string.CustomerId), getString(R.string.ApiSiteIDValue));
 
-            NumberPassenger.getInstance().setNumberAdult(((Spinner) rootView.findViewById(R.id.spAdult)).getSelectedItemPosition() + 1);
-            NumberPassenger.getInstance().setNumberChild(((Spinner) rootView.findViewById(R.id.spChild)).getSelectedItemPosition());
-            NumberPassenger.getInstance().setNumberBaby(((Spinner) rootView.findViewById(R.id.spBaby)).getSelectedItemPosition());
-            NumberPassenger.getInstance().setParams(params);
+            NumberPassenger.Companion.getInstance().setNumberAdult(((Spinner) rootView.findViewById(R.id.spAdult)).getSelectedItemPosition() + 1);
+            NumberPassenger.Companion.getInstance().setNumberChild(((Spinner) rootView.findViewById(R.id.spChild)).getSelectedItemPosition());
+            NumberPassenger.Companion.getInstance().setNumberBaby(((Spinner) rootView.findViewById(R.id.spBaby)).getSelectedItemPosition());
+            NumberPassenger.Companion.getInstance().setParams(params);
             HSH.onOpenPage(getActivity(), FlightActivity.class);
         }
     }

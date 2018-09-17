@@ -71,8 +71,8 @@ public class HotelRoomsFragment extends Fragment {
         try {
             Map<String, String> params = new HashMap<>();
             params.put("hotel", "" + HotelDetailsActivity.fFeed.getResult().getId());
-            params.put("numberOfNights", NumberPassenger.getInstance().getParams().get("numberOfNights"));
-            params.put("inDate", NumberPassenger.getInstance().getParams().get("inDate"));
+            params.put("numberOfNights", NumberPassenger.Companion.getInstance().getParams().get("numberOfNights"));
+            params.put("inDate", NumberPassenger.Companion.getInstance().getParams().get("inDate"));
             Call<Response> call =
                     ApiClient.getClient2().create(ApiInterface.class).GetRoomPrice(params);
             call.enqueue(new Callback<Response>() {
@@ -80,7 +80,7 @@ public class HotelRoomsFragment extends Fragment {
                 public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
                     try {
                         if (response.code() == 200) {
-                            ((TextView) rootView.findViewById(R.id.txt_notify)).setText(HSH.toPersianNumber("از " + NumberPassenger.getInstance().getParams().get(getString(R.string.PersianDate)) + " به مدت " + NumberPassenger.getInstance().getParams().get("numberOfNights") + " شب"));
+                            ((TextView) rootView.findViewById(R.id.txt_notify)).setText(HSH.toPersianNumber("از " + NumberPassenger.Companion.getInstance().getParams().get(getString(R.string.PersianDate)) + " به مدت " + NumberPassenger.Companion.getInstance().getParams().get("numberOfNights") + " شب"));
                             List<ResultItem> rooms = response.body().getResult();
                             for (int i = 0; i < HotelDetailsActivity.fFeed.getResult().getRooms().size(); i++) {
                                 RoomsItems.get(i).setPrice(rooms.get(i).getTotalPrice().getSales() + "");

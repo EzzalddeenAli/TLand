@@ -46,8 +46,8 @@ public class FlightDetailActivity extends BaseActivity {
         ActivityFlightDetailBinding binding = DataBindingUtil.setContentView(FlightDetailActivity.this, R.layout.activity_flight_detail);
         Application.getComponent2().Inject(this);
         Response fFeed = (Response) getIntent().getExtras().getSerializable("feedItem");
-        fFeed.setFromCity(NumberPassenger.getInstance().getParams().get(getString(R.string.PersianFrom)));
-        fFeed.setToCity(NumberPassenger.getInstance().getParams().get(getString(R.string.PersianTo)));
+        fFeed.setFromCity(NumberPassenger.Companion.getInstance().getParams().get(getString(R.string.PersianFrom)));
+        fFeed.setToCity(NumberPassenger.Companion.getInstance().getParams().get(getString(R.string.PersianTo)));
         binding.setFlightItem(fFeed);
         //binding.txtDifference.setText(HSH.toPersianNumber(Calculate(fFeed.getFlightTime().substring(0, 5), fFeed.getArrivalTime().substring(0, 5))));
         imageLoader.displayImage(getString(R.string.url2) + "Files/Airlines/" + fFeed.getAirlineCode() + ".png?ver=1", ((ImageView) findViewById(R.id.img_logo)), options);
@@ -64,16 +64,16 @@ public class FlightDetailActivity extends BaseActivity {
                 Map<String, String> params = new HashMap<>();
                 params.put("ParvazId", "" + fFeed.getParvazId());
                 params.put("ClassId", "" + fFeed.getClassId());
-                params.put("ADL", "" + NumberPassenger.getInstance().getParams().get(getString(R.string.AdultCount)));
-                params.put("CHD", "" + NumberPassenger.getInstance().getParams().get(getString(R.string.ChildCount)));
-                params.put("INF", "" + NumberPassenger.getInstance().getParams().get(getString(R.string.InfantCount)));
+                params.put("ADL", "" + NumberPassenger.Companion.getInstance().getParams().get(getString(R.string.AdultCount)));
+                params.put("CHD", "" + NumberPassenger.Companion.getInstance().getParams().get(getString(R.string.ChildCount)));
+                params.put("INF", "" + NumberPassenger.Companion.getInstance().getParams().get(getString(R.string.InfantCount)));
                 params.put("KndSys", "" + fFeed.getKndSys());
                 params.put("CustomerId", getString(R.string.ApiSiteIDValue));
                 params.put("PassengerIP", ip);
                 IWebservice.IFlightReserve delegate = new IWebservice.IFlightReserve() {
                     @Override
                     public void getResult(FlightReserve item) throws Exception {
-                        NumberPassenger.getInstance().setReqNo(item.getReqNo());
+                        NumberPassenger.Companion.getInstance().setReqNo(item.getReqNo());
 
                         findViewById(R.id.pb).setVisibility(View.GONE);
                         Intent intent = new Intent(FlightDetailActivity.this, PassengersListActivity.class);

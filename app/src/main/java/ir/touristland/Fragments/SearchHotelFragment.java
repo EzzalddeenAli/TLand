@@ -123,16 +123,16 @@ public class SearchHotelFragment extends Fragment implements View.OnClickListene
             params.put(getString(R.string.ChechoutDateStr), etReturn.getTag().toString());
             params.put(getString(R.string.NumberOfNights), String.valueOf(Calculate(etDeparture.getContentDescription().toString(), etReturn.getContentDescription().toString())));*/
            /* params.put(getString(R.string.AdultCount), String.valueOf(((Spinner) rootView.findViewById(R.id.spAdult)).getSelectedItemPosition() + 1));
-            NumberPassenger.getInstance().setNumberAdult(((Spinner) rootView.findViewById(R.id.spAdult)).getSelectedItemPosition() + 1);*/
+            NumberPassenger.Companion.getInstance().).setNumberAdult(((Spinner) rootView.findViewById(R.id.spAdult)).getSelectedItemPosition() + 1);*/
            /*
             params.put(getString(R.string.ChildCount), String.valueOf(((Spinner) rootView.findViewById(R.id.spChild)).getSelectedItemPosition()));
             params.put(getString(R.string.InfantCount), String.valueOf(((Spinner) rootView.findViewById(R.id.spBaby)).getSelectedItemPosition()));
             params.put(getString(R.string.ApiSiteID), getString(R.string.ApiSiteIDValue));
 
-            NumberPassenger.getInstance().setNumberAdult(((Spinner) rootView.findViewById(R.id.spAdult)).getSelectedItemPosition() + 1);
-            NumberPassenger.getInstance().setNumberChild(((Spinner) rootView.findViewById(R.id.spChild)).getSelectedItemPosition());
-            NumberPassenger.getInstance().setNumberBaby(((Spinner) rootView.findViewById(R.id.spBaby)).getSelectedItemPosition());*/
-            NumberPassenger.getInstance().setParams(params);
+            NumberPassenger.Companion.getInstance().).setNumberAdult(((Spinner) rootView.findViewById(R.id.spAdult)).getSelectedItemPosition() + 1);
+            NumberPassenger.Companion.getInstance().).setNumberChild(((Spinner) rootView.findViewById(R.id.spChild)).getSelectedItemPosition());
+            NumberPassenger.Companion.getInstance().).setNumberBaby(((Spinner) rootView.findViewById(R.id.spBaby)).getSelectedItemPosition());*/
+            NumberPassenger.Companion.getInstance().setParams(params);
             HSH.onOpenPage(getActivity(), HotelListActivity.class);
         }
     }

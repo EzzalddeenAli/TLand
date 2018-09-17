@@ -103,7 +103,7 @@ public class HotelListActivity extends BaseActivity implements View.OnClickListe
         Application.getComponent().Inject(this);
         DeclareElements();
         UpdateChecker();
-        params.put(getString(R.string.city), NumberPassenger.getInstance().getParams().get(getString(R.string.city)));
+        params.put(getString(R.string.city), NumberPassenger.Companion.getInstance().getParams().get(getString(R.string.city)));
         txtBefore = findViewById(R.id.txt_before);
         txtAfter = findViewById(R.id.txt_after);
         txtSort = findViewById(R.id.txt_sort);
@@ -127,8 +127,8 @@ public class HotelListActivity extends BaseActivity implements View.OnClickListe
                 android.R.color.holo_green_light,
                 android.R.color.holo_orange_light,
                 android.R.color.holo_red_light);
-        ((TextView) findViewById(R.id.toolbar_title)).setText(HSH.toPersianNumber(NumberPassenger.getInstance().getParams().get(getString(R.string.PersianFrom))));
-        ((TextView) findViewById(R.id.txt_date)).setText(HSH.toPersianNumber(NumberPassenger.getInstance().getParams().get(getString(R.string.PersianDate))));
+        ((TextView) findViewById(R.id.toolbar_title)).setText(HSH.toPersianNumber(NumberPassenger.Companion.getInstance().getParams().get(getString(R.string.PersianFrom))));
+        ((TextView) findViewById(R.id.txt_date)).setText(HSH.toPersianNumber(NumberPassenger.Companion.getInstance().getParams().get(getString(R.string.PersianDate))));
         findViewById(R.id.img_back).setOnClickListener(v -> finish());
 
         SearchHotel();

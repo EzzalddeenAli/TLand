@@ -50,9 +50,9 @@ public class PassengersListActivity extends BaseActivity implements View.OnClick
         DeclareElements();
 
         numberPassenger =
-                NumberPassenger.getInstance().getNumberAdult() +
-                        NumberPassenger.getInstance().getNumberChild() +
-                        NumberPassenger.getInstance().getNumberBaby();
+                NumberPassenger.Companion.getInstance().getNumberAdult() +
+                        NumberPassenger.Companion.getInstance().getNumberChild() +
+                        NumberPassenger.Companion.getInstance().getNumberBaby();
 
         String FORMAT = "%02d:%02d";
         new CountDownTimer((numberPassenger - 1) * 1000 + 300000, 1000) {
@@ -75,7 +75,7 @@ public class PassengersListActivity extends BaseActivity implements View.OnClick
         LinearLayout linearAdult = findViewById(R.id.linearAdult);
         LinearLayout linearChild = findViewById(R.id.linearChild);
         LinearLayout linearBaby = findViewById(R.id.linearBaby);
-        for (int i = 1; i <= NumberPassenger.getInstance().getNumberAdult(); i++) {
+        for (int i = 1; i <= NumberPassenger.Companion.getInstance().getNumberAdult(); i++) {
             view = inflater.inflate(R.layout.item_passenger, null);
             TextView v = view.findViewById(R.id.text);
             v.setId(i);
@@ -85,19 +85,19 @@ public class PassengersListActivity extends BaseActivity implements View.OnClick
             HSH.vectorRight(PassengersListActivity.this, v, R.drawable.ic_man);
             linearAdult.addView(view);
         }
-        numberPassenger = NumberPassenger.getInstance().getNumberAdult() + 1;
-        for (int i = numberPassenger; i < numberPassenger + NumberPassenger.getInstance().getNumberChild(); i++) {
+        numberPassenger = NumberPassenger.Companion.getInstance().getNumberAdult() + 1;
+        for (int i = numberPassenger; i < numberPassenger + NumberPassenger.Companion.getInstance().getNumberChild(); i++) {
             view = inflater.inflate(R.layout.item_passenger, null);
             TextView v = view.findViewById(R.id.text);
             v.setId(i);
             v.setText("اطلاعات مسافر " + String.valueOf(i));
-            v.setTag(String.valueOf(i - NumberPassenger.getInstance().getNumberAdult()));
+            v.setTag(String.valueOf(i - NumberPassenger.Companion.getInstance().getNumberAdult()));
             v.setOnClickListener(this);
             HSH.vectorRight(PassengersListActivity.this, v, R.drawable.ic_child);
             linearChild.addView(view);
         }
-        numberPassenger = numberPassenger + NumberPassenger.getInstance().getNumberChild();
-        for (int i = numberPassenger; i < numberPassenger + NumberPassenger.getInstance().getNumberBaby(); i++) {
+        numberPassenger = numberPassenger + NumberPassenger.Companion.getInstance().getNumberChild();
+        for (int i = numberPassenger; i < numberPassenger + NumberPassenger.Companion.getInstance().getNumberBaby(); i++) {
             view = inflater.inflate(R.layout.item_passenger, null);
             TextView v = view.findViewById(R.id.text);
             v.setId(i);
@@ -107,9 +107,9 @@ public class PassengersListActivity extends BaseActivity implements View.OnClick
             HSH.vectorRight(PassengersListActivity.this, v, R.drawable.ic_baby);
             linearBaby.addView(view);
         }
-        if (NumberPassenger.getInstance().getNumberChild() == 0)
+        if (NumberPassenger.Companion.getInstance().getNumberChild() == 0)
             findViewById(R.id.txt_child).setVisibility(View.GONE);
-        if (NumberPassenger.getInstance().getNumberBaby() == 0)
+        if (NumberPassenger.Companion.getInstance().getNumberBaby() == 0)
             findViewById(R.id.txt_baby).setVisibility(View.GONE);
     }
 
@@ -162,7 +162,7 @@ public class PassengersListActivity extends BaseActivity implements View.OnClick
                             params.put("MobileNo", etMobile.getText().toString().trim());
                             params.put("TelNo", etPhone.getText().toString().trim());
                             params.put("CustomerId", getString(R.string.ApiSiteIDValue));
-                            NumberPassenger.getInstance().setParams(params);
+                            NumberPassenger.Companion.getInstance().setParams(params);
 
                             StringData = StringData.replace("PrimeryPhoneNumber[", "PrimeryPhoneNumber[" + mob);
                             StringData = StringData.replace("PrimeryEmail[", "PrimeryEmail[" + email);

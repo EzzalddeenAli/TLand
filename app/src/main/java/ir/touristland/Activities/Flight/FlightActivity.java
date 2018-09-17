@@ -126,7 +126,7 @@ public class FlightActivity extends BaseActivity implements View.OnClickListener
 
         DeclareElements();
         UpdateChecker();
-        params = NumberPassenger.getInstance().getParams();
+        params = NumberPassenger.Companion.getInstance().getParams();
         SearchFlight();
         txtBefore = findViewById(R.id.txt_before);
         txtAfter = findViewById(R.id.txt_after);

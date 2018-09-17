@@ -28,7 +28,7 @@ public class AssignmentActivity extends BaseActivity {
         ((TextView) findViewById(R.id.txt_cities)).setText(fFeed.getFromCity() + " > " + fFeed.getToCity());
         ((TextView) findViewById(R.id.txt_date)).setText(HSH.toPersianNumber(getIntent().getExtras().getString("Date") + "  " + fFeed.getStartTime()));
         ((TextView) findViewById(R.id.txt_airline)).setText(fFeed.getAirLineTitle());
-        ((TextView) findViewById(R.id.txt_systemic)).setText(fFeed.getIsSystemic() == true ? "سیستمی" : "چارتری");
+        //((TextView) findViewById(R.id.txt_systemic)).setText(fFeed.getIsSystemic() == true ? "سیستمی" : "چارتری");
 
         LinearLayout linearProductCategory = findViewById(R.id.linear_passengers);
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);

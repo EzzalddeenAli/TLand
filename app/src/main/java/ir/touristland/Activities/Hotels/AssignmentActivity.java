@@ -34,10 +34,10 @@ public class AssignmentActivity extends BaseActivity {
         findViewById(R.id.img_back).setOnClickListener(v -> finish());
         //HotelItem fFeed = HotelDetailsActivity.hotelItem;
         HotelCapacityItem roomItem = (HotelCapacityItem) getIntent().getExtras().getSerializable("RoomItem");
-        ((TextView) findViewById(R.id.txt_cities)).setText(HSH.toPersianNumber(NumberPassenger.getInstance().getParams().get(getString(R.string.PersianFrom))
-                + "\n" + "رزرو اتاق برای " + NumberPassenger.getInstance().getParams().get(getString(R.string.NumberOfNights)) + " شب"));
-        ((TextView) findViewById(R.id.txt_date)).setText(NumberPassenger.getInstance().getParams().get(getString(R.string.PersianDate)) + " تا "
-                + NumberPassenger.getInstance().getParams().get(getString(R.string.PersianDateReturn)));
+        ((TextView) findViewById(R.id.txt_cities)).setText(HSH.toPersianNumber(NumberPassenger.Companion.getInstance().getParams().get(getString(R.string.PersianFrom))
+                + "\n" + "رزرو اتاق برای " + NumberPassenger.Companion.getInstance().getParams().get(getString(R.string.NumberOfNights)) + " شب"));
+        ((TextView) findViewById(R.id.txt_date)).setText(NumberPassenger.Companion.getInstance().getParams().get(getString(R.string.PersianDate)) + " تا "
+                + NumberPassenger.Companion.getInstance().getParams().get(getString(R.string.PersianDateReturn)));
         ((TextView) findViewById(R.id.txt_RoomNumber)).setText(HSH.toPersianNumber("شماره اتاق : " + roomItem.getHotelRoomId()));
         ((TextView) findViewById(R.id.txt_RoomTypeName)).setText(roomItem.getDescriptRoom());
 
@@ -67,9 +67,9 @@ public class AssignmentActivity extends BaseActivity {
 
             sumPrice += Integer.parseInt(roomItem.getPrice().substring(0, roomItem.getPrice().indexOf(".")));
         }
-        if (Integer.parseInt(NumberPassenger.getInstance().getParams().get(getString(R.string.NumberOfNights))) == 0)
-            Integer.parseInt(NumberPassenger.getInstance().getParams().put(getString(R.string.NumberOfNights), "1"));
-        ((TextView) findViewById(R.id.txt_sumPrice)).setText(HSH.toPersianNumber(Parse(String.valueOf(sumPrice * Integer.parseInt(NumberPassenger.getInstance().getParams().get(getString(R.string.NumberOfNights))))) + " تومان"));
+        if (Integer.parseInt(NumberPassenger.Companion.getInstance().getParams().get(getString(R.string.NumberOfNights))) == 0)
+            Integer.parseInt(NumberPassenger.Companion.getInstance().getParams().put(getString(R.string.NumberOfNights), "1"));
+        ((TextView) findViewById(R.id.txt_sumPrice)).setText(HSH.toPersianNumber(Parse(String.valueOf(sumPrice * Integer.parseInt(NumberPassenger.Companion.getInstance().getParams().get(getString(R.string.NumberOfNights))))) + " تومان"));
     }
 
     public String Parse(String text) {
