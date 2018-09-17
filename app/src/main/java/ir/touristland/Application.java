@@ -39,6 +39,7 @@ public class Application extends SugarApp {
     public static MainComponent component;
     public static MainComponent component2;
     public static MainComponent ravis;
+    public static MainComponent TLand;
 
     public static Application get(AppCompatActivity activity) {
         return (Application) activity.getApplication();
@@ -54,6 +55,10 @@ public class Application extends SugarApp {
 
     public static MainComponent GetRavis() {
         return ravis;
+    }
+
+    public static MainComponent GetTLand() {
+        return TLand;
     }
 
     @Override
@@ -93,6 +98,12 @@ public class Application extends SugarApp {
                 .appModule(new AppModule(this))
                 .build();
 
+        TLand = DaggerMainComponent.builder()
+                .imageLoaderMoudle(new ImageLoaderMoudle(this))
+                .netModule(new NetModule(getString(R.string.TLand_url)))
+                .appModule(new AppModule(this))
+                .build();
+
         in = AnimationUtils.loadAnimation(this,
                 R.anim.zoom_in);
 
@@ -118,10 +129,7 @@ public class Application extends SugarApp {
             };
 
         } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
         }
-
 
         String path = Environment.getDataDirectory() + "/data/" + getPackageName() + "/databases/kishtravel_db.db";
         database = SQLiteDatabase.openDatabase(path, null, SQLiteDatabase.CREATE_IF_NECESSARY);
